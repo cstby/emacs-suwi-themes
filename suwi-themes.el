@@ -16,7 +16,8 @@
 (require 'modus-themes)
 
 (defgroup suwi-themes nil
-  "Customization group for Suwi themes."
+  "Sweet and simple themes.
+The `suwi-themes' are built on top of the `modus-themes'."
   :group 'faces
   :group 'modus-themes
   :prefix "suwi-")
@@ -50,7 +51,7 @@
     (bg-search-lazy bg-cyan-intense)
     (bg-search-static bg-magenta-subtle)
     (bg-search-replace bg-red-intense))
-  "Semantic mappings shared by all Suwi themes, similar to Modus palette common entries.")
+  "Common palette shared by every Suwi theme, to be layered on a modus theme palette.")
 
 (defconst suwi-common-custom-faces
   '(
@@ -74,8 +75,7 @@
     `(highlight-numbers-number ((,c :foreground ,accent-2)))
     `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-main :weight bold)))
     `(vertical-border ((,c :foreground ,border))))
-  "Semantic face overrides layered on top of `modus-themes-faces'.
-They remain palette-agnostic, so every Suwi theme inherits them.")
+  "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
 
 (provide 'suwi-themes)
 

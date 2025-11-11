@@ -46,7 +46,7 @@
     (fnname "#ff6bd3")
     (variable "#6a6dff")
     (constant "#ff5e89"))
-  "Palette overrides applied by `suwi-walo'.")
+  "Palette entries that give `suwi-walo' its distinctive vibe.")
 
 (defconst suwi-walo-custom-faces-partial
   '(
@@ -55,19 +55,21 @@
     `(org-level-3 ((,c :foreground ,accent-2 :weight semi-bold)))
     `(org-level-4 ((,c :foreground ,accent-3)))
     `(link ((,c :foreground ,accent-0 :underline (:color ,accent-0 :style line)))))
-  "Faces unique to `suwi-walo' layered after the base overrides.")
+  "Custom faces that give `suwi-walo' its distinctive vibe.")
 
 (defcustom suwi-walo-palette-overrides nil
-  "Theme-local overrides for `suwi-walo'."
+  "User overrides for `suwi-walo-palette'.
+Entries here use the same (KEY . VALUE) format as Modus palette overrides."
   :group 'suwi-themes
   :type '(repeat (list symbol (choice symbol string))))
 
 (defconst suwi-walo-palette
-  (append suwi-walo-palette-partial suwi-base-light-palette-full))
+  (append suwi-walo-palette-partial suwi-base-light-palette-full)
+  "Complete palette for the `suwi-walo', to be passed into `modus-themes-theme'.")
 
 (defconst suwi-walo-custom-faces
-  (append suwi-base-light-custom-faces suwi-walo-custom-faces-partial)
-  "List passed to `modus-themes-theme' for `suwi-walo'.")
+  (append suwi-base-light-all-custom-faces suwi-walo-custom-faces-partial)
+  "Complete custom-face list for `suwi-walo', to be passed into `modus-themes-theme'.")
 
 (modus-themes-theme
  'suwi-walo

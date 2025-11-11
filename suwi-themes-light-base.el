@@ -121,11 +121,11 @@
     (fnname accent-0)
     (variable "#5d65ff")
     (constant "#ff5f73"))
-  "Default light base palette for Suwi themes.")
+  "Base light palette shared by all light suwi themes.")
 
 (defcustom suwi-base-light-overrides nil
-  "Overrides for `suwi-base-light-palette'.
-Use this to tweak base colors before derived themes add their own entries."
+  "Overrides for entries in `suwi-base-light-palette'.
+Apply custom tweaks here before derived themes append their own palette partials."
   :group 'suwi-themes
   :type '(repeat (list symbol (choice symbol string))))
 
@@ -137,16 +137,16 @@ Use this to tweak base colors before derived themes add their own entries."
     `(highlight-numbers-number ((,c :foreground ,accent-2)))
     `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-main :weight bold)))
     `(org-table ((,c :foreground ,accent-1))))
-  "Chromatic overrides specific to the light Suwi base.")
+  "Custom faces shared by all light suwi themes.")
 
 (defconst suwi-base-light-palette-full
   (append suwi-base-light-palette suwi-common-palette)
-  "Full light palette ready for Modus consumption.")
+  "Full light palette appended with the shared common palette.")
 
-(defconst suwi-base-light-custom-faces
+(defconst suwi-base-light-all-custom-faces
   (append suwi-common-custom-faces
           suwi-base-light-custom-faces-partial)
-  "Face overrides applied by any Suwi theme derived from the light base.")
+  "Full custom faces appended with the shared common custom faces.")
 
 (provide 'suwi-themes-light-base)
 
