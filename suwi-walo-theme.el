@@ -1,4 +1,4 @@
-;;; suwi-test-light-theme.el --- Sweet vivid test theme -*- lexical-binding:t -*-
+;;; suwi-walo-theme.el --- Sweet vivid test theme -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2025  Carl
 
@@ -15,7 +15,7 @@
 
 (require 'suwi-themes-light-base)
 
-(defconst suwi-test-light-palette-partial
+(defconst suwi-walo-palette-partial
   '((bg-main "#fff8ff")
     (fg-main "#43204d")
     (fg-alt "#b2166b")
@@ -46,44 +46,44 @@
     (fnname "#ff6bd3")
     (variable "#6a6dff")
     (constant "#ff5e89"))
-  "Palette overrides applied by `suwi-test-light'.")
+  "Palette overrides applied by `suwi-walo'.")
 
-(defconst suwi-test-light-face-overrides
+(defconst suwi-walo-face-overrides
   '(
     `(org-level-1 ((,c :foreground ,accent-0 :weight bold :height 1.1)))
     `(org-level-2 ((,c :foreground ,accent-1 :weight semi-bold :height 1.05)))
     `(org-level-3 ((,c :foreground ,accent-2 :weight semi-bold)))
     `(org-level-4 ((,c :foreground ,accent-3)))
     `(link ((,c :foreground ,accent-0 :underline (:color ,accent-0 :style line)))))
-  "Faces unique to `suwi-test-light' layered after the base overrides.")
+  "Faces unique to `suwi-walo' layered after the base overrides.")
 
-(defcustom suwi-test-light-palette-overrides nil
-  "Theme-local overrides for `suwi-test-light'."
+(defcustom suwi-walo-palette-overrides nil
+  "Theme-local overrides for `suwi-walo'."
   :group 'suwi-themes
   :type '(repeat (list symbol (choice symbol string))))
 
-(defconst suwi-test-light-palette
-  (append suwi-test-light-palette-partial suwi-base-light-palette-full))
+(defconst suwi-walo-palette
+  (append suwi-walo-palette-partial suwi-base-light-palette-full))
 
-(defconst suwi-test-light--all-face-overrides
-  (append suwi-base-light-all-face-overrides suwi-test-light-face-overrides)
-  "List passed to `modus-themes-theme' for `suwi-test-light'.")
+(defconst suwi-walo--all-face-overrides
+  (append suwi-base-light-all-face-overrides suwi-walo-face-overrides)
+  "List passed to `modus-themes-theme' for `suwi-walo'.")
 
 (modus-themes-theme
- 'suwi-test-light
+ 'suwi-walo
  'suwi-themes
  "Sweet, vivid test palette for the Suwi framework."
  'light
  'modus-operandi-palette
- 'suwi-test-light-palette
- 'suwi-test-light-palette-overrides
- 'suwi-test-light--all-face-overrides)
+ 'suwi-walo-palette
+ 'suwi-walo-palette-overrides
+ 'suwi-walo--all-face-overrides)
 
 ;;;###autoload
 (when load-file-name
   (add-to-list 'custom-theme-load-path
                (file-name-directory load-file-name)))
 
-(provide 'suwi-test-light-theme)
+(provide 'suwi-walo-theme)
 
-;;; suwi-test-light-theme.el ends here
+;;; suwi-walo-theme.el ends here
