@@ -21,7 +21,7 @@
   :group 'modus-themes
   :prefix "suwi-")
 
-(defconst suwi-common-modus-mappings
+(defconst suwi-common-palette
   '((fg-heading-0 accent-0)
     (fg-heading-1 accent-1)
     (fg-heading-2 accent-2)
@@ -50,8 +50,7 @@
     (bg-search-lazy bg-cyan-intense)
     (bg-search-static bg-magenta-subtle)
     (bg-search-replace bg-red-intense))
-  "Semantic mappings shared by all Suwi themes.
-All keys correspond to Modus palette slots consumed by `modus-themes-theme'.")
+  "Semantic mappings shared by all Suwi themes, similar to Modus palette common entries.")
 
 (defconst suwi-common-face-overrides
   '(
@@ -77,29 +76,6 @@ All keys correspond to Modus palette slots consumed by `modus-themes-theme'.")
     `(vertical-border ((,c :foreground ,border))))
   "Semantic face overrides layered on top of `modus-themes-faces'.
 They remain palette-agnostic, so every Suwi theme inherits them.")
-
-(defun suwi-collect-colors (&rest alists)
-  "Combine ALISTS of color definitions into one lookup table.
-Each element in ALISTS should have the form (NAME . \"#RRGGBB\")."
-  (let ((table (make-hash-table :test #'eq)))
-    (dolist (alist alists)
-      (dolist (entry alist)
-        (puthash (car entry) (cdr entry) table)))
-    table))
-
-(defun suwi-map-palette (palette-mapping color-table)
-  "Resolve PALETTE-MAPPING using COLOR-TABLE into Modus palette entries.
-PALETTE-MAPPING is an alist of (SYMBOL . COLOR-NAME). COLOR-NAME must
-exist in COLOR-TABLE."
-  (mapcar
-   (lambda (entry)
-      (let* ((symbol (car entry))
-             (color-name (cdr entry))
-             (hex (gethash color-name color-table)))
-        (unless hex
-          (error "Unknown color %s for palette symbol %s" color-name symbol))
-        (list symbol hex)))
-   palette-mapping))
 
 (provide 'suwi-themes)
 
