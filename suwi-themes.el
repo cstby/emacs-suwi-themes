@@ -52,7 +52,7 @@
     (bg-search-replace bg-red-intense))
   "Semantic mappings shared by all Suwi themes, similar to Modus palette common entries.")
 
-(defconst suwi-common-face-overrides
+(defconst suwi-common-custom-faces
   '(
     `(mode-line
       ((default :inherit modus-themes-ui-variable-pitch

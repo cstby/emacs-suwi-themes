@@ -48,7 +48,7 @@
     (constant "#ff5e89"))
   "Palette overrides applied by `suwi-walo'.")
 
-(defconst suwi-walo-face-overrides
+(defconst suwi-walo-custom-faces-partial
   '(
     `(org-level-1 ((,c :foreground ,accent-0 :weight bold :height 1.1)))
     `(org-level-2 ((,c :foreground ,accent-1 :weight semi-bold :height 1.05)))
@@ -65,8 +65,8 @@
 (defconst suwi-walo-palette
   (append suwi-walo-palette-partial suwi-base-light-palette-full))
 
-(defconst suwi-walo--all-face-overrides
-  (append suwi-base-light-all-face-overrides suwi-walo-face-overrides)
+(defconst suwi-walo-custom-faces
+  (append suwi-base-light-custom-faces suwi-walo-custom-faces-partial)
   "List passed to `modus-themes-theme' for `suwi-walo'.")
 
 (modus-themes-theme
@@ -77,7 +77,7 @@
  'modus-operandi-palette
  'suwi-walo-palette
  'suwi-walo-palette-overrides
- 'suwi-walo--all-face-overrides)
+ 'suwi-walo-custom-faces)
 
 ;;;###autoload
 (when load-file-name

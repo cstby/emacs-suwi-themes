@@ -129,7 +129,7 @@ Use this to tweak base colors before derived themes add their own entries."
   :group 'suwi-themes
   :type '(repeat (list symbol (choice symbol string))))
 
-(defconst suwi-base-light-face-overrides
+(defconst suwi-base-light-custom-faces-partial
   '(
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
@@ -143,9 +143,9 @@ Use this to tweak base colors before derived themes add their own entries."
   (append suwi-base-light-palette suwi-common-palette)
   "Full light palette ready for Modus consumption.")
 
-(defconst suwi-base-light-all-face-overrides
-  (append suwi-common-face-overrides
-          suwi-base-light-face-overrides)
+(defconst suwi-base-light-custom-faces
+  (append suwi-common-custom-faces
+          suwi-base-light-custom-faces-partial)
   "Face overrides applied by any Suwi theme derived from the light base.")
 
 (provide 'suwi-themes-light-base)
