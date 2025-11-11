@@ -1,0 +1,106 @@
+;;; suwi-themes.el --- Core scaffolding for Suwi themes -*- lexical-binding:t -*-
+
+;; Copyright (C) 2025  Carl
+
+;; Author: Carl
+;; Maintainer: Carl
+;; Package-Requires: ((emacs "28.1") (modus-themes "5.0.0"))
+
+;;; Commentary:
+;;
+;; Entrypoint for the Suwi theme collection.  Hosts shared customization
+;; groups, semantic mappings, and face overrides that all themes reuse.
+
+;;; Code:
+
+(require 'modus-themes)
+
+(defgroup suwi-themes nil
+  "Customization group for Suwi themes."
+  :group 'faces
+  :group 'modus-themes
+  :prefix "suwi-")
+
+(defconst suwi-common-modus-mappings
+  '((fg-heading-0 accent-0)
+    (fg-heading-1 accent-1)
+    (fg-heading-2 accent-2)
+    (fg-heading-3 accent-3)
+    (fg-heading-4 accent-0)
+    (fg-heading-5 accent-1)
+    (fg-heading-6 accent-2)
+    (fg-heading-7 accent-3)
+    (fg-heading-8 accent-0)
+
+    (bg-tab-bar bg-alt)
+    (bg-tab-current bg-main)
+    (bg-tab-other bg-active)
+
+    (fg-completion-match-0 accent-0)
+    (fg-completion-match-1 accent-1)
+    (fg-completion-match-2 accent-2)
+    (fg-completion-match-3 accent-3)
+
+    (bg-line-number-active unspecified)
+    (fg-line-number-active accent-2)
+    (bg-line-number-inactive bg-alt)
+    (fg-line-number-inactive fg-dim)
+
+    (bg-search-current bg-yellow-intense)
+    (bg-search-lazy bg-cyan-intense)
+    (bg-search-static bg-magenta-subtle)
+    (bg-search-replace bg-red-intense))
+  "Semantic mappings shared by all Suwi themes.
+All keys correspond to Modus palette slots consumed by `modus-themes-theme'.")
+
+(defconst suwi-common-face-overrides
+  '(
+    `(mode-line
+      ((default :inherit modus-themes-ui-variable-pitch
+                :background ,bg-mode-line-active
+                :foreground ,fg-mode-line-active)
+       (((supports :box t))
+        :box (:style released-button :color ,border))
+       (t :underline ,border)))
+    `(mode-line-inactive
+      ((,c :inherit modus-themes-ui-variable-pitch
+           :background ,bg-mode-line-inactive
+           :foreground ,fg-mode-line-inactive)))
+    `(magit-section-highlight ((,c :background ,bg-alt)))
+    `(org-block ((,c :background ,bg-alt :box (:line-width 1 :color ,bg-alt))))
+    `(org-table ((,c :foreground ,accent-1)))
+    `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
+    `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
+    `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
+    `(highlight-numbers-number ((,c :foreground ,accent-2)))
+    `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-main :weight bold)))
+    `(vertical-border ((,c :foreground ,border))))
+  "Semantic face overrides layered on top of `modus-themes-faces'.
+They remain palette-agnostic, so every Suwi theme inherits them.")
+
+(defun suwi-collect-colors (&rest alists)
+  "Combine ALISTS of color definitions into one lookup table.
+Each element in ALISTS should have the form (NAME . \"#RRGGBB\")."
+  (let ((table (make-hash-table :test #'eq)))
+    (dolist (alist alists)
+      (dolist (entry alist)
+        (puthash (car entry) (cdr entry) table)))
+    table))
+
+(defun suwi-map-palette (palette-mapping color-table)
+  "Resolve PALETTE-MAPPING using COLOR-TABLE into Modus palette entries.
+PALETTE-MAPPING is an alist of (SYMBOL . COLOR-NAME). COLOR-NAME must
+exist in COLOR-TABLE."
+  (mapcar
+   (lambda (entry)
+      (let* ((symbol (car entry))
+             (color-name (cdr entry))
+             (hex (gethash color-name color-table)))
+        (unless hex
+          (error "Unknown color %s for palette symbol %s" color-name symbol))
+        (list symbol hex)))
+   palette-mapping))
+
+(provide 'suwi-themes)
+
+;;; suwi-themes.el ends here
