@@ -141,8 +141,8 @@ Apply custom tweaks here before derived themes append their own palette partials
   "Custom faces shared by all dark suwi themes.")
 
 (defconst suwi-base-dark-palette-full
-  (append suwi-base-dark-palette suwi-common-palette)
-  "Full dark palette appended with the shared common palette.")
+  (append suwi-base-dark-overrides suwi-base-dark-palette suwi-common-palette)
+  "Full dark palette after applying user overrides and shared semantics.")
 
 (defconst suwi-base-dark-all-custom-faces
   (append suwi-common-custom-faces

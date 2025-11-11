@@ -140,8 +140,8 @@ Apply custom tweaks here before derived themes append their own palette partials
   "Custom faces shared by all light suwi themes.")
 
 (defconst suwi-base-light-palette-full
-  (append suwi-base-light-palette suwi-common-palette)
-  "Full light palette appended with the shared common palette.")
+  (append suwi-base-light-overrides suwi-base-light-palette suwi-common-palette)
+  "Full light palette after applying user overrides and shared semantics.")
 
 (defconst suwi-base-light-all-custom-faces
   (append suwi-common-custom-faces
