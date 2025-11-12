@@ -13,6 +13,7 @@
 
 ;;; Code:
 
+(require 'cl-lib)
 (require 'modus-themes)
 
 (defgroup suwi-themes nil
@@ -76,6 +77,35 @@ The `suwi-themes' are built on top of the `modus-themes'."
     `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-main :weight bold)))
     `(vertical-border ((,c :foreground ,border))))
   "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
+
+(defconst suwi-themes-items '(suwi-walo suwi-pimeja)
+  "List of Suwi theme symbols managed by the entry point.")
+
+(dolist (theme suwi-themes-items)
+  (modus-themes-register theme))
+
+(defun suwi-themes--sorted-items ()
+  "Return Suwi themes sorted light-first for display commands."
+  (modus-themes-sort (copy-sequence suwi-themes-items) 'light))
+
+(define-minor-mode suwi-themes-take-over-modus-themes-mode
+  "Limit Modus theme commands so they only consider Suwi themes."
+  :global t
+  :init-value nil
+  :group 'suwi-themes)
+
+(cl-defmethod modus-themes-get-themes (&context (suwi-themes-take-over-modus-themes-mode (eql t)))
+  "Return only Suwi themes when `suwi-themes-take-over-modus-themes-mode' is enabled."
+  (suwi-themes--sorted-items))
+
+(modus-themes-define-derivative-command suwi-themes toggle)
+(modus-themes-define-derivative-command suwi-themes rotate)
+(modus-themes-define-derivative-command suwi-themes select)
+(modus-themes-define-derivative-command suwi-themes load-random)
+(modus-themes-define-derivative-command suwi-themes load-random-dark)
+(modus-themes-define-derivative-command suwi-themes load-random-light)
+(modus-themes-define-derivative-command suwi-themes list-colors)
+(modus-themes-define-derivative-command suwi-themes list-colors-current)
 
 (provide 'suwi-themes)
 
