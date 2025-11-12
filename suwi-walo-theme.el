@@ -58,18 +58,17 @@
   "Custom faces that give `suwi-walo' its distinctive vibe.")
 
 (defcustom suwi-walo-palette-overrides nil
-  "User palette overrides evaluated after `suwi-walo-palette'.
-Accepts `(KEY . VALUE)' entries understood by Modus."
+  "User palette overrides evaluated after `suwi-walo-palette'."
   :group 'suwi-themes
   :type '(repeat (list symbol (choice symbol string))))
 
 (defconst suwi-walo-palette
   (append suwi-walo-palette-partial suwi-base-light-palette-full)
-  "Complete palette for `suwi-walo', ready for `modus-themes-theme'.")
+  "Complete palette for `suwi-walo'.")
 
 (defconst suwi-walo-custom-faces
   (append suwi-base-light-all-custom-faces suwi-walo-custom-faces-partial)
-  "Complete custom-face list for `suwi-walo', to be passed into `modus-themes-theme'.")
+  "Complete custom-face list for `suwi-walo'.")
 
 (modus-themes-theme
  'suwi-walo
