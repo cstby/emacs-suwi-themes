@@ -79,7 +79,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
   "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
 
 
-(defconst suwi-themes-light '(suwi-walo)
+(defconst suwi-themes-light '(suwi-walo suwi-jazz)
   "Light Suwi theme symbols.")
 
 (defconst suwi-themes-dark '(suwi-pimeja)
@@ -91,6 +91,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
 
 (defconst suwi-themes-with-properties
   '((suwi-walo suwi-themes "Sweet vivid Suwi light theme." light modus-operandi-palette suwi-walo-palette suwi-walo-palette-overrides)
+    (suwi-jazz suwi-themes "Retro pastel Suwi light theme." light modus-operandi-palette suwi-jazz-palette suwi-jazz-palette-overrides)
     (suwi-pimeja suwi-themes "Moody neon Suwi dark theme." dark modus-vivendi-palette suwi-pimeja-palette suwi-pimeja-palette-overrides))
   "Metadata tuples describing each Suwi theme.")
 
