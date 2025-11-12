@@ -86,9 +86,9 @@
     (bg-removed-refine "#f4bcd0")
     (fg-removed "#a6223f")
 
-    (bg-mode-line-active "#ffb2ea")
-    (fg-mode-line-active "#4a275a")
-    (bg-mode-line-inactive "#f8e0f0")
+    (bg-mode-line-active "#fafafa")
+    (fg-mode-line-active fg-main)
+    (bg-mode-line-inactive bg-main)
     (fg-mode-line-inactive "#7c658a")
 
     (bg-hl-line "#ffeefd")
