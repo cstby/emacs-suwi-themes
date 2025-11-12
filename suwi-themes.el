@@ -130,6 +130,22 @@ If IS-FUNCTION is non-nil, alias as a function."
 
 (suwi-themes-define-option-aliases)
 
+(defcustom suwi-themes-italics-by-default t
+  "When non-nil, enable `modus-themes-italic-constructs' for Suwi themes.
+This makes comments, docstrings, and other Modus-provided italic
+constructs render in italics without requiring user configuration.
+Set it to nil if you would rather keep the upstream Modus default and
+manage `suwi-themes-italic-constructs' yourself."
+  :group 'suwi-themes
+  :type 'boolean)
+
+(defun suwi-themes--apply-default-option-values ()
+  "Apply opinionated defaults for Suwi on top of Modus options."
+  (when suwi-themes-italics-by-default
+    (setq suwi-themes-italic-constructs t)))
+
+(suwi-themes--apply-default-option-values)
+
 (defalias 'suwi-themes-load-theme 'modus-themes-load-theme
   "Load a Suwi theme by delegating to `modus-themes-load-theme'.")
 
