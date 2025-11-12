@@ -78,16 +78,68 @@ The `suwi-themes' are built on top of the `modus-themes'."
     `(vertical-border ((,c :foreground ,border))))
   "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
 
-(defconst suwi-themes-items '(suwi-walo suwi-pimeja)
-  "List of Suwi theme symbols managed by the entry point.")
 
-(dolist (theme suwi-themes-items)
-  (modus-themes-register theme))
+(defconst suwi-themes-light '(suwi-walo)
+  "Light Suwi theme symbols.")
+
+(defconst suwi-themes-dark '(suwi-pimeja)
+  "Dark Suwi theme symbols.")
+
+(defconst suwi-themes-items
+  (append suwi-themes-light suwi-themes-dark)
+  "All Suwi theme symbols.")
+
+(defconst suwi-themes-with-properties
+  '((suwi-walo suwi-themes "Sweet vivid Suwi light theme." light modus-operandi-palette suwi-walo-palette suwi-walo-palette-overrides)
+    (suwi-pimeja suwi-themes "Moody neon Suwi dark theme." dark modus-vivendi-palette suwi-pimeja-palette suwi-pimeja-palette-overrides))
+  "Metadata tuples describing each Suwi theme.")
+
+(defvar suwi-themes--declared-p nil)
+
+(defun suwi-themes-declare-themes ()
+  "Declare and register every theme in `suwi-themes-with-properties'."
+  (unless suwi-themes--declared-p
+    (dolist (entry suwi-themes-with-properties)
+      (apply #'modus-themes-declare entry)
+      (modus-themes-register (car entry)))
+    (setq suwi-themes--declared-p t)))
+
+(suwi-themes-declare-themes)
+
+(defvar suwi-themes--aliased-p nil)
+
+(defun suwi-themes-define-alias (suffix &optional is-function)
+  "Alias `modus-themes-SUFFIX' as `suwi-themes-SUFFIX'.
+If IS-FUNCTION is non-nil, alias as a function."
+  (let ((modus-symbol (intern-soft (format "modus-themes-%s" suffix)))
+        (suwi-symbol (intern (format "suwi-themes-%s" suffix))))
+    (when (symbolp modus-symbol)
+      (funcall (if is-function #'defalias #'defvaralias)
+               suwi-symbol modus-symbol))))
+
+(defun suwi-themes-define-option-aliases ()
+  "Initialize the Suwi aliases for Modus customization knobs."
+  (unless suwi-themes--aliased-p
+    (dolist (suffix '(disable-other-themes to-toggle to-rotate after-load-theme-hook
+                                           post-load-hook italic-constructs bold-constructs
+                                           variable-pitch-ui mixed-fonts headings completions
+                                           prompts common-palette-overrides))
+      (suwi-themes-define-alias suffix))
+    (setq suwi-themes--aliased-p t)))
+
+(suwi-themes-define-option-aliases)
+
+(defalias 'suwi-themes-load-theme 'modus-themes-load-theme
+  "Load a Suwi theme by delegating to `modus-themes-load-theme'.")
+
+(defalias 'suwi-themes-with-colors 'modus-themes-with-colors
+  "Invoke BODY with the current Suwi palette bound.")
 
 (defun suwi-themes--sorted-items ()
   "Return Suwi themes sorted light-first for display commands."
   (modus-themes-sort (copy-sequence suwi-themes-items) 'light))
 
+;;;###autoload
 (define-minor-mode suwi-themes-take-over-modus-themes-mode
   "Limit Modus theme commands so they only consider Suwi themes."
   :global t
@@ -98,13 +150,21 @@ The `suwi-themes' are built on top of the `modus-themes'."
   "Return only Suwi themes when `suwi-themes-take-over-modus-themes-mode' is enabled."
   (suwi-themes--sorted-items))
 
+;;;###autoload (autoload 'suwi-themes-toggle "suwi-themes")
 (modus-themes-define-derivative-command suwi-themes toggle)
+;;;###autoload (autoload 'suwi-themes-rotate "suwi-themes")
 (modus-themes-define-derivative-command suwi-themes rotate)
+;;;###autoload (autoload 'suwi-themes-select "suwi-themes")
 (modus-themes-define-derivative-command suwi-themes select)
+;;;###autoload (autoload 'suwi-themes-load-random "suwi-themes")
 (modus-themes-define-derivative-command suwi-themes load-random)
+;;;###autoload (autoload 'suwi-themes-load-random-dark "suwi-themes")
 (modus-themes-define-derivative-command suwi-themes load-random-dark)
+;;;###autoload (autoload 'suwi-themes-load-random-light "suwi-themes")
 (modus-themes-define-derivative-command suwi-themes load-random-light)
+;;;###autoload (autoload 'suwi-themes-list-colors "suwi-themes")
 (modus-themes-define-derivative-command suwi-themes list-colors)
+;;;###autoload (autoload 'suwi-themes-list-colors-current "suwi-themes")
 (modus-themes-define-derivative-command suwi-themes list-colors-current)
 
 (provide 'suwi-themes)
