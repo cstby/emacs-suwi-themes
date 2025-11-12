@@ -16,21 +16,50 @@
 (require 'suwi-themes)
 
 (defconst suwi-base-light-palette
-  '((accent-0 "#ff5fcb")
-    (accent-1 "#f0a000")
-    (accent-2 "#2fbf96")
-    (accent-3 "#5d65ff")
+  '(
+    ;; Light theme colors
+    (suwi-white "#fafafa")
+    (white-1 "#f4f4f4")
+    (white-2 "#efefef")
+    (grey "#dbdbdb")
+    (black "#242424")
 
+
+    (lavender "#eaeafa")
+    (azure "#eafafa")
+    (honeydew "#eafaea")
+    (rose "#faeaea")
+
+    (slate "#778ca3")
+
+    (gold "#b88812")
+    (orange "#ff5200")
+    (red "#fe2500")
+    (pink "#fa1090")
+    (violet "#c71585")
+    (purple+1 "#9d2dab")
+    (purple "#3b2685")
+    (blue "#005cc5")
+    (blue+1 "#00afef")
+    (teal "#009c9f")
+    (teal+1 "#04c4c7")
+    (green "#10d7ae")
+
+    ;; Modus palette mappings
     (cursor accent-0)
-    (bg-main "#fff6fb")
-    (bg-dim "#e6fff2")
+    (bg-main suwi-white)
+    (bg-dim white-2)
     (bg-alt "#ffdceb")
     (fg-main "#4a275a")
-    (fg-dim "#6a506d")
+    (fg-dim slate)
     (fg-alt "#a0227d")
     (bg-active "#f3c7df")
     (bg-inactive "#fdf0f6")
     (border "#f09ed0")
+
+    (bg-tab-bar      bg-dim)
+    (bg-tab-current  bg-main)
+    (bg-tab-other    grey)
 
     (red "#f44773")
     (red-warmer "#ff3c5c")
@@ -56,6 +85,11 @@
     (cyan-warmer "#4bd0ff")
     (cyan-cooler "#00b7f5")
     (cyan-faint "#6cbfe0")
+
+    (accent-0 "#ff5fcb")
+    (accent-1 "#f0a000")
+    (accent-2 "#2fbf96")
+    (accent-3 "#5d65ff")
 
     (bg-red-intense "#ffd0dd")
     (bg-green-intense "#c8f6dd")
@@ -86,10 +120,10 @@
     (bg-removed-refine "#f4bcd0")
     (fg-removed "#a6223f")
 
-    (bg-mode-line-active "#fafafa")
+    (bg-mode-line-active bg-dim)
     (fg-mode-line-active fg-main)
     (bg-mode-line-inactive bg-main)
-    (fg-mode-line-inactive "#7c658a")
+    (fg-mode-line-inactive fg-dim)
 
     (bg-hl-line "#ffeefd")
     (bg-region "#ffd6f1")
@@ -131,6 +165,7 @@ Apply custom tweaks here before derived themes append their own palette partials
 
 (defconst suwi-base-light-custom-faces-partial
   '(
+    `(tab-bar-tab-inactive ((,c :box (:line-width -2 :color ,bg-tab-bar) :foreground ,fg-dim :background ,bg-tab-bar)))
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
     `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
