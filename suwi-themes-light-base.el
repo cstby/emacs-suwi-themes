@@ -32,6 +32,12 @@
     (bg-tab-current  "#ffffff")
     (bg-tab-other    "#c2c2c2")
 
+    ;; TODO: Decide if these are the right mappings
+    ;; (bg-tab-bar bg-alt)
+    ;; (bg-tab-current bg-main)
+    ;; (bg-tab-other bg-active)
+
+
     (bg-mode-line-active        "#c8c8c8")
     (fg-mode-line-active        "#000000")
     (border-mode-line-active    "#5a5a5a")
@@ -40,6 +46,7 @@
     (border-mode-line-inactive  "#a3a3a3")
 
     ;; Common accent foregrounds
+    ;; TODO: add "intense"
 
     (red            "#f44773")
     (red-warmer     "#ff3c5c")
@@ -66,16 +73,6 @@
     (cyan-cooler    "#00b7f5")
     (cyan-faint     "#6cbfe0")
 
-    ;; Uncommon accent foregrounds
-
-    (rust       "#8a290f")             ; only used for overrides-faint
-    (gold       "#6c501c")             ; only used for overrides-faint
-    (olive      "#4c6000")
-    (slate      "#2f3f83")
-    (indigo     "#4a3a8a")
-    (maroon     "#731c52")
-    (pink       "#7b435c")
-
     ;; Common accent backgrounds
     ;; See the common mapping about their use.
 
@@ -86,8 +83,24 @@
     (bg-magenta  "#ffddff")
     (bg-cyan     "#bfefff")
 
-    ;; Uncommon accent background and foreground pairs
-    ;; These are used almost nowhere.
+    ;; Accent mappings
+    ;; Gives a theme its vibe.
+
+    (accent-0 blue)                     ; directories
+    (accent-1 magenta-warmer)
+    (accent-2 cyan)
+    (accent-3 red)
+
+    ;; Font Lock
+
+    (prompt "#a0227d")
+    (keyword "#b050d4")
+    (string "#f0a000")
+    (comment "#8f6a9a")
+    (type "#2bd4f0")
+    (fnname accent-0)
+    (variable "#5d65ff")
+    (constant "#ff5f73")
 
 
 
@@ -103,11 +116,6 @@
     (modeline-err     "#7f0000")
     (modeline-warning "#5f0070")
     (modeline-info    "#002580")
-
-    ;; TODO: Decide if these are the right mappings
-    ;; (bg-tab-bar bg-alt)
-    ;; (bg-tab-current bg-main)
-    ;; (bg-tab-other bg-active)
 
     ;; Diffs
 
@@ -136,20 +144,9 @@
 
     ;; Paren match
 
-    (bg-paren-match        "#5fcfff")
-    (bg-paren-expression   "#efd3f5")
+    (bg-paren-match        "#5fcfff")   ; maybe an accent color?
+    (bg-paren-expression   "#efd3f5")   ; maybe a bg accent color?
     (underline-paren-match unspecified)
-
-    ;; Font Lock
-
-    (prompt "#a0227d")
-    (keyword "#b050d4")
-    (string "#f0a000")
-    (comment "#8f6a9a")
-    (type "#2bd4f0")
-    (fnname accent-0)
-    (variable "#5d65ff")
-    (constant "#ff5f73")
 
     ;; General mappings
 
@@ -195,14 +192,6 @@
     (type cyan-cooler)
     (variable cyan)
     (variable-use slate)
-
-    ;; Accent mappings
-    ;; Used in various places where color is needed
-
-    (accent-0 blue)                     ; directories
-    (accent-1 magenta-warmer)
-    (accent-2 cyan)
-    (accent-3 red)
 
     ;; Date mappings
 

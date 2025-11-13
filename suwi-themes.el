@@ -54,7 +54,6 @@ The `suwi-themes' are built on top of the `modus-themes'."
     (rainbow-7 accent-2)
     (rainbow-8 accent-3)
 
-
     ;; Used in tty, symbol-overlay, pulse, popup, pdf-tools, minimap, and others.
     ;; And in the intense override.
     (bg-red-intense     bg-red)
@@ -72,7 +71,6 @@ The `suwi-themes' are built on top of the `modus-themes'."
     (bg-blue-subtle    bg-blue)
     (bg-magenta-subtle bg-magenta)
     (bg-cyan-subtle    bg-cyan)
-
 
     ;; These nuanced colors are not used directly in any faces
     ;; Used in the intense override.
@@ -107,6 +105,14 @@ The `suwi-themes' are built on top of the `modus-themes'."
     (bg-sage     bg-green-subtle)
     (fg-sage     green)
 
+    (rust        red-faint)
+    (gold        yellow)
+    (olive       green-faint)
+    (slate       blue)
+    (indigo      blue-faint)
+    (maroon      magenta-faint)
+    (pink        magenta)
+
 
 
     )
@@ -125,8 +131,6 @@ The `suwi-themes' are built on top of the `modus-themes'."
       ((,c :inherit modus-themes-ui-variable-pitch
            :background ,bg-mode-line-inactive
            :foreground ,fg-mode-line-inactive)))
-    `(magit-section-highlight ((,c :background ,bg-alt)))
-    `(org-block ((,c :background ,bg-alt :box (:line-width 1 :color ,bg-alt))))
     `(org-table ((,c :foreground ,accent-1)))
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
