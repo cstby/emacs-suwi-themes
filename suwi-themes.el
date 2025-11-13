@@ -98,8 +98,14 @@ The `suwi-themes' are built on top of the `modus-themes'."
     (cyan-graph-1-bg    cyan-faint)
 
     ;; Rare colors
-
-
+    (bg-clay     bg-red-subtle)
+    (fg-clay     red)
+    (bg-ochre    bg-yellow-subtle)
+    (fg-ochre    yellow)
+    (bg-lavender bg-magenta-subtle)
+    (fg-lavender magenta)
+    (bg-sage     bg-green-subtle)
+    (fg-sage     green)
 
 
 
