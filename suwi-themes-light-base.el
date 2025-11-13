@@ -28,38 +28,48 @@
     (bg-inactive      "#e0e0e0")
     (border           "#9f9f9f")
 
+    (bg-tab-bar      "#dfdfdf")
+    (bg-tab-current  "#ffffff")
+    (bg-tab-other    "#c2c2c2")
+
+    (bg-mode-line-active        "#c8c8c8")
+    (fg-mode-line-active        "#000000")
+    (border-mode-line-active    "#5a5a5a")
+    (bg-mode-line-inactive      "#e6e6e6")
+    (fg-mode-line-inactive      "#585858")
+    (border-mode-line-inactive  "#a3a3a3")
+
     ;; Common accent foregrounds
 
-    ;; TODO: add "intense" for each color.
-    (red "            #f44773")
-    (red-warmer "     #ff3c5c")
-    (red-cooler "     #eb4ca0")
-    (red-faint "      #d45a7b")
-    (green "          #2fbf96")
-    (green-warmer "   #55c759")
-    (green-cooler "   #1fa9d6")
-    (green-faint "    #5ca488")
-    (yellow "         #f0a000")
-    (yellow-warmer "  #ff9500")
-    (yellow-cooler "  #f08a5c")
-    (yellow-faint "   #d58a5f")
-    (blue "           #5d65ff")
-    (blue-warmer "    #7c5dff")
-    (blue-cooler "    #3f8dff")
-    (blue-faint "     #6c74d4")
-    (magenta "        #ff5fd7")
-    (magenta-warmer " #ff3fee")
-    (magenta-cooler " #c150ff")
-    (magenta-faint "  #d060c5")
-    (cyan "           #2bd4f0")
-    (cyan-warmer "    #4bd0ff")
-    (cyan-cooler "    #00b7f5")
-    (cyan-faint "     #6cbfe0")
+    (red            "#f44773")
+    (red-warmer     "#ff3c5c")
+    (red-cooler     "#eb4ca0")
+    (red-faint      "#d45a7b")
+    (green          "#2fbf96")
+    (green-warmer   "#55c759")
+    (green-cooler   "#1fa9d6")
+    (green-faint    "#5ca488")
+    (yellow         "#f0a000")
+    (yellow-warmer  "#ff9500")
+    (yellow-cooler  "#f08a5c")
+    (yellow-faint   "#d58a5f")
+    (blue           "#5d65ff")
+    (blue-warmer    "#7c5dff")
+    (blue-cooler    "#3f8dff")
+    (blue-faint     "#6c74d4")
+    (magenta        "#ff5fd7")
+    (magenta-warmer "#ff3fee")
+    (magenta-cooler "#c150ff")
+    (magenta-faint  "#d060c5")
+    (cyan           "#2bd4f0")
+    (cyan-warmer    "#4bd0ff")
+    (cyan-cooler    "#00b7f5")
+    (cyan-faint     "#6cbfe0")
 
     ;; Uncommon accent foregrounds
 
-    (rust       "#8a290f")
-    (gold       "#6c501c")
+    (rust       "#8a290f")             ; only used for overrides-faint
+    (gold       "#6c501c")             ; only used for overrides-faint
     (olive      "#4c6000")
     (slate      "#2f3f83")
     (indigo     "#4a3a8a")
@@ -67,29 +77,17 @@
     (pink       "#7b435c")
 
     ;; Common accent backgrounds
+    ;; See the common mapping about their use.
 
-    (bg-red-intense "#ffd0dd")
-    (bg-green-intense "#c8f6dd")
-    (bg-yellow-intense "#ffe4a3")
-    (bg-blue-intense "#dfe7ff")
-    (bg-magenta-intense "#ffd4ff")
-    (bg-cyan-intense "#c6f4ff")
-
-    (bg-red-subtle "#ffebf1")
-    (bg-green-subtle "#e6fff2")
-    (bg-yellow-subtle "#fff7df")
-    (bg-blue-subtle "#eff1ff")
-    (bg-magenta-subtle "#fdefff")
-    (bg-cyan-subtle "#ecfdff")
-
-    (bg-red-nuanced     "#ffe8e8")
-    (bg-green-nuanced   "#e0f6e0")
-    (bg-yellow-nuanced  "#f8f0d0")
-    (bg-blue-nuanced    "#ecedff")
-    (bg-magenta-nuanced "#f8e6f5")
-    (bg-cyan-nuanced    "#e0f2fa")
+    (bg-red      "#ffcfbf")
+    (bg-green    "#b3fabf")
+    (bg-yellow   "#fff576")
+    (bg-blue     "#ccdfff")
+    (bg-magenta  "#ffddff")
+    (bg-cyan     "#bfefff")
 
     ;; Uncommon accent background and foreground pairs
+    ;; These are used almost nowhere.
 
     (bg-clay     "#f1c8b5")
     (fg-clay     "#63192a")
@@ -103,21 +101,6 @@
     (bg-sage     "#c0e7d4")
     (fg-sage     "#124b41")
 
-    ;; Graphs
-
-    (bg-graph-red-0     "#ef7969")
-    (bg-graph-red-1     "#ffaab4")
-    (bg-graph-green-0   "#45c050")
-    (bg-graph-green-1   "#75ef30")
-    (bg-graph-yellow-0  "#ffcf00")
-    (bg-graph-yellow-1  "#f9ff00")
-    (bg-graph-blue-0    "#7f90ff")
-    (bg-graph-blue-1    "#a6c0ff")
-    (bg-graph-magenta-0 "#e07fff")
-    (bg-graph-magenta-1 "#fad0ff")
-    (bg-graph-cyan-0    "#70d3f0")
-    (bg-graph-cyan-1    "#afefff")
-
     ;; Special purpose
 
     (bg-completion       "#c0deff")
@@ -127,24 +110,16 @@
     (bg-region           "#bdbdbd")
     (fg-region           "#000000")
 
-    (bg-mode-line-active        "#c8c8c8")
-    (fg-mode-line-active        "#000000")
-    (border-mode-line-active    "#5a5a5a")
-    (bg-mode-line-inactive      "#e6e6e6")
-    (fg-mode-line-inactive      "#585858")
-    (border-mode-line-inactive  "#a3a3a3")
-
     (modeline-err     "#7f0000")
     (modeline-warning "#5f0070")
     (modeline-info    "#002580")
 
-    (bg-tab-bar      "#dfdfdf")
-    (bg-tab-current  "#ffffff")
-    (bg-tab-other    "#c2c2c2")
+    ;; TODO: Decide if these are the right mappings
+    ;; (bg-tab-bar bg-alt)
+    ;; (bg-tab-current bg-main)
+    ;; (bg-tab-other bg-active)
 
     ;; Diffs
-
-    ;; TODO: take a look at ef-themes
 
     (bg-added           "#c1f2d1")
     (bg-added-faint     "#d8f8e1")
@@ -232,18 +207,12 @@
     (variable-use slate)
 
     ;; Accent mappings
+    ;; Used in various places where color is needed
 
-    (accent-0 blue)
+    (accent-0 blue)                     ; directories
     (accent-1 magenta-warmer)
     (accent-2 cyan)
     (accent-3 red)
-
-    ;; Completion mappings
-
-    (fg-completion-match-0 blue)
-    (fg-completion-match-1 magenta-warmer)
-    (fg-completion-match-2 cyan)
-    (fg-completion-match-3 red)
 
     ;; Date mappings
 
@@ -306,21 +275,10 @@
     (prose-table-formula magenta-warmer)
     (prose-tag magenta-faint)
 
-    ;; Rainbow mappings
 
-    ;; TODO: What are these used for?
-    ;; TODO Maybe map these to accents?
-    (rainbow-0 fg-main)
-    (rainbow-1 magenta-intense)
-    (rainbow-2 cyan-intense)
-    (rainbow-3 red-warmer)
-    (rainbow-4 yellow-intense)
-    (rainbow-5 magenta-cooler)
-    (rainbow-6 green-intense)
-    (rainbow-7 blue-warmer)
-    (rainbow-8 magenta-warmer)
 
     ;; Search mappings
+    ;; Used for anzu, avy, isearch etc.
 
     (bg-search-current bg-yellow-intense)
     (bg-search-lazy bg-cyan-intense)
@@ -330,21 +288,7 @@
     (bg-search-rx-group-0 bg-blue-intense)
     (bg-search-rx-group-1 bg-green-intense)
     (bg-search-rx-group-2 bg-red-subtle)
-    (bg-search-rx-group-3 bg-magenta-subtle)
-
-    ;; Heading mappings
-    ;; TODO: What are these used for?
-    ;; TODO: Map these to accent colors?
-
-    (fg-heading-0 cyan-cooler)
-    (fg-heading-1 fg-main)
-    (fg-heading-2 yellow-faint)
-    (fg-heading-3 fg-alt)
-    (fg-heading-4 magenta)
-    (fg-heading-5 green-faint)
-    (fg-heading-6 red-faint)
-    (fg-heading-7 cyan-warmer)
-    (fg-heading-8 fg-dim))
+    (bg-search-rx-group-3 bg-magenta-subtle))
   "Base light palette shared by all light suwi themes.")
 
 (defcustom suwi-base-light-overrides nil

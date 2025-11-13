@@ -24,7 +24,9 @@ The `suwi-themes' are built on top of the `modus-themes'."
   :prefix "suwi-")
 
 (defconst suwi-common-palette
-  '((fg-heading-0 accent-0)
+  '(
+    ;; These are used for org and md heandings, info titles, etc.
+    (fg-heading-0 accent-0)
     (fg-heading-1 accent-1)
     (fg-heading-2 accent-2)
     (fg-heading-3 accent-3)
@@ -34,24 +36,74 @@ The `suwi-themes' are built on top of the `modus-themes'."
     (fg-heading-7 accent-3)
     (fg-heading-8 accent-0)
 
-    (bg-tab-bar bg-alt)
-    (bg-tab-current bg-main)
-    (bg-tab-other bg-active)
-
+    ;; These are used for completion matches
     (fg-completion-match-0 accent-0)
     (fg-completion-match-1 accent-1)
     (fg-completion-match-2 accent-2)
     (fg-completion-match-3 accent-3)
 
-    (bg-line-number-active unspecified)
-    (fg-line-number-active accent-2)
-    (bg-line-number-inactive bg-alt)
-    (fg-line-number-inactive fg-dim)
 
-    (bg-search-current bg-yellow-intense)
-    (bg-search-lazy bg-cyan-intense)
-    (bg-search-static bg-magenta-subtle)
-    (bg-search-replace bg-red-intense))
+    ;; These are used for rainbow delimiters only.
+    (rainbow-0 fg-main)
+    (rainbow-1 accent-0)
+    (rainbow-2 accent-1)
+    (rainbow-3 accent-2)
+    (rainbow-4 accent-3)
+    (rainbow-5 accent-0)
+    (rainbow-6 accent-1)
+    (rainbow-7 accent-2)
+    (rainbow-8 accent-3)
+
+
+    ;; Used in tty, symbol-overlay, pulse, popup, pdf-tools, minimap, and others.
+    ;; And in the intense override.
+    (bg-red-intense     bg-red)
+    (bg-green-intense   bg-green)
+    (bg-yellow-intense  bg-yellow)
+    (bg-blue-intense    bg-blue)
+    (bg-magenta-intense bg-magenta)
+    (bg-cyan-intense    bg-cyan)
+
+    ;; Used in tuareg, golden-ratio-scroll-screen, annotate.
+    ;; Used in "intense" override.
+    (bg-red-subtle     bg-red)
+    (bg-green-subtle   bg-green)
+    (bg-yellow-subtle  bg-yellow)
+    (bg-blue-subtle    bg-blue)
+    (bg-magenta-subtle bg-magenta)
+    (bg-cyan-subtle    bg-cyan)
+
+
+    ;; These nuanced colors are not used directly in any faces
+    ;; Used in the intense override.
+    (bg-red-nuanced     bg-red)
+    (bg-green-nuanced   bg-green)
+    (bg-yellow-nuanced  bg-yellow)
+    (bg-blue-nuanced    bg-blue)
+    (bg-magenta-nuanced bg-magenta)
+    (bg-cyan-nuanced    bg-cyan)
+
+    ;; Graph Colors
+    (red-graph-0-bg     red)
+    (red-graph-1-bg     red-faint)
+    (green-graph-0-bg   green)
+    (green-graph-1-bg   green-faint)
+    (yellow-graph-0-bg  yellow)
+    (yellow-graph-1-bg  yellow-faint)
+    (blue-graph-0-bg    blue)
+    (blue-graph-1-bg    blue-faint)
+    (magenta-graph-0-bg magenta)
+    (magenta-graph-1-bg magenta-faint)
+    (cyan-graph-0-bg    cyan)
+    (cyan-graph-1-bg    cyan-faint)
+
+    ;; Rare colors
+
+
+
+
+
+    )
   "Common palette shared by every Suwi theme, to be layered on a modus theme palette.")
 
 (defconst suwi-common-custom-faces
