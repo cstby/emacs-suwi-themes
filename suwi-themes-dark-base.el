@@ -89,8 +89,10 @@
 
     (bg-mode-line-active "#2f3546")
     (fg-mode-line-active "#fcecff")
+    (border-mode-line-active border)
     (bg-mode-line-inactive "#1c202b")
     (fg-mode-line-inactive "#9ca1b7")
+    (border-mode-line-inactive border)
 
     (bg-hl-line "#1a202d")
     (bg-region "#252d3d")
