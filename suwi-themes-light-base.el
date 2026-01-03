@@ -19,18 +19,19 @@
   '(
     ;; Basic values
 
-    (bg-main          "#fafafa")
-    (bg-dim           "#f4f4f4")
-    (fg-main          "#242424")
-    (fg-dim           "#777777")
-    (fg-alt           "#a0227d")
-    (bg-active        "#c4c4c4")
-    (bg-inactive      "#e0e0e0")
-    (border           "#9f9f9f")
+    (bg-main "#fafafa")
+    (bg-dim "#f4f4f4")
+    (fg-main "#333333")
+    (fg-dim "#778899")
+    ;; fg-alt is used sparingly, and differentiation from fg-main seems unnecessary.
+    (fg-alt fg-main)
+    (bg-active "#c4c4c4")
+    (bg-inactive "#e0e0e0")
+    (border "#9f9f9f")
 
-    (bg-tab-bar      "#dfdfdf")
-    (bg-tab-current  "#ffffff")
-    (bg-tab-other    "#c2c2c2")
+    (bg-tab-bar "#efefef")
+    (bg-tab-current "#ffffff")
+    (bg-tab-other bg-tab-bar)
 
     ;; TODO: Decide if these are the right mappings
     ;; (bg-tab-bar bg-alt)
@@ -38,126 +39,139 @@
     ;; (bg-tab-other bg-active)
 
 
-    (bg-mode-line-active        "#c8c8c8")
-    (fg-mode-line-active        "#000000")
-    (border-mode-line-active    "#5a5a5a")
-    (bg-mode-line-inactive      "#e6e6e6")
-    (fg-mode-line-inactive      "#585858")
-    (border-mode-line-inactive  "#a3a3a3")
+    (bg-mode-line-active "efefef")
+    (fg-mode-line-active fg-main)
+    (border-mode-line-active border)
+
+    (bg-mode-line-inactive bg-main)     ;maybe change to inactive
+    (fg-mode-line-inactive "#585858")   ;maybe change to fg-dim
+    (border-mode-line-inactive border)
 
     ;; Common accent foregrounds
     ;; TODO: add "intense"
 
-    (red            "#f44773")
-    (red-warmer     "#ff3c5c")
-    (red-cooler     "#eb4ca0")
-    (red-faint      "#d45a7b")
-    (green          "#2fbf96")
-    (green-warmer   "#55c759")
-    (green-cooler   "#1fa9d6")
-    (green-faint    "#5ca488")
-    (yellow         "#f0a000")
-    (yellow-warmer  "#ff9500")
-    (yellow-cooler  "#f08a5c")
-    (yellow-faint   "#d58a5f")
-    (blue           "#5d65ff")
-    (blue-warmer    "#7c5dff")
-    (blue-cooler    "#3f8dff")
-    (blue-faint     "#6c74d4")
-    (magenta        "#ff5fd7")
-    (magenta-warmer "#ff3fee")
-    (magenta-cooler "#c150ff")
-    (magenta-faint  "#d060c5")
-    (cyan           "#2bd4f0")
-    (cyan-warmer    "#4bd0ff")
-    (cyan-cooler    "#00b7f5")
-    (cyan-faint     "#6cbfe0")
+    (red              "#cc0000")        ;   0°
+    (red-warmer       "#cc4400")        ;  20°
+    (yellow-warmer    "#cc8800")        ;  40°
+    (yellow           "#cccc00")        ;  60°
+    (yellow-cooler    "#88cc00")        ;  80°
+    (green-warmer     "#44cc00")        ; 100°
+    (green            "#00cc00")        ; 120°
+    (green-cooler     "#00cc44")        ; 140°
+    (cyan-cooler      "#00cc88")        ; 160°
+    (cyan             "#00cccc")        ; 180°
+    (cyan-warmer      "#0088cc")        ; 200°
+    (blue-cooler      "#0044cc")        ; 220°
+    (blue             "#0000cc")        ; 240°
+    (blue-warmer      "#4400cc")        ; 260°
+    (magenta-cooler   "#8800cc")        ; 280°
+    (magenta          "#cc00cc")        ; 300°
+    (magenta-warmer   "#cc0088")        ; 320°
+    (red-cooler       "#cc0044")        ; 340°
+
+    (red-faint "#e08585")
+    (yellow-faint "#e0e085")
+    (green-faint "#86e085")
+    (cyan-faint "#85e1e1")
+    (blue-faint "#8585e0")
+    (magenta-faint "#e085e0")
 
     ;; Common accent backgrounds
     ;; See the common mapping about their use.
 
-    (bg-red      "#ffcfbf")
-    (bg-green    "#b3fabf")
-    (bg-yellow   "#fff576")
-    (bg-blue     "#ccdfff")
-    (bg-magenta  "#ffddff")
-    (bg-cyan     "#bfefff")
+    (bg-red "#f0c2c2")
+    (bg-yellow "#f0f0c2")
+    (bg-green "#c2f0c2")
+    (bg-cyan "#c2f0f0")
+    (bg-blue "#c2c2f0")
+    (bg-magenta "#f0c2f0")
 
     ;; Accent mappings
     ;; Gives a theme its vibe.
 
-    (accent-0 blue)                     ; directories
-    (accent-1 magenta-warmer)
+
+    (accent-0 blue-cooler)
+    (accent-1 magenta)
     (accent-2 cyan)
-    (accent-3 red)
+    (accent-3 red-cooler)
 
     ;; Font Lock
 
-    (prompt "#a0227d")
-    (keyword "#b050d4")
-    (string "#f0a000")
-    (comment "#8f6a9a")
-    (type "#2bd4f0")
-    (fnname accent-0)
-    (variable "#5d65ff")
-    (constant "#ff5f73")
+    ;; Code mappings
 
+    (comment fg-dim)
+    (docstring comment)
+    (string accent-2)
+    (keyword accent-0)
+    (constant accent-0)
+    (fnname accent-1)
+    (property accent-1)
+    (builtin fg-main)
+    (fnname-call fg-main)
+    (preprocessor fg-main)
+    (rx-backslash fg-main)
+    (rx-construct fg-main)
+    (type accent-0)
+    (variable accent-1)
+    (variable-use fg-main)
+
+    (prompt yellow-cooler)
 
 
     ;; Special purpose
 
-    (bg-completion       "#c0deff")
-    (bg-hover            "#b2e4dc")
-    (bg-hover-secondary  "#f5d0a0")
-    (bg-hl-line          "#dae5ec")
-    (bg-region           "#bdbdbd")
-    (fg-region           "#000000")
+    (bg-completion "#c0deff")
+    (bg-hover "#b2e4dc")
+    (bg-hover-secondary "#f5d0a0")
+    (bg-hl-line "#dae5ec")
+    (bg-region "#bdbdbd")
+    (fg-region "#000000")
 
-    (modeline-err     "#7f0000")
+    (modeline-err "#7f0000")
     (modeline-warning "#5f0070")
-    (modeline-info    "#002580")
+    (modeline-info "#002580")
 
     ;; Diffs
 
-    (bg-added           "#c1f2d1")
-    (bg-added-faint     "#d8f8e1")
-    (bg-added-refine    "#aee5be")
-    (bg-added-fringe    "#6cc06c")
-    (fg-added           "#005000")
-    (fg-added-intense   "#006700")
+    (bg-added "#c1f2d1")
+    (bg-added-faint "#d8f8e1")
+    (bg-added-refine "#aee5be")
+    (bg-added-fringe "#6cc06c")
+    (fg-added "#005000")
+    (fg-added-intense "#006700")
 
-    (bg-changed         "#ffdfa9")
-    (bg-changed-faint   "#ffefbf")
-    (bg-changed-refine  "#fac090")
-    (bg-changed-fringe  "#d7c20a")
-    (fg-changed         "#553d00")
+    (bg-changed "#ffdfa9")
+    (bg-changed-faint "#ffefbf")
+    (bg-changed-refine "#fac090")
+    (bg-changed-fringe "#d7c20a")
+    (fg-changed "#553d00")
     (fg-changed-intense "#655000")
 
-    (bg-removed         "#ffd8d5")
-    (bg-removed-faint   "#ffe9e9")
-    (bg-removed-refine  "#f3b5af")
-    (bg-removed-fringe  "#d84a4f")
-    (fg-removed         "#8f1313")
+    (bg-removed "#ffd8d5")
+    (bg-removed-faint "#ffe9e9")
+    (bg-removed-refine "#f3b5af")
+    (bg-removed-fringe "#d84a4f")
+    (fg-removed "#8f1313")
     (fg-removed-intense "#aa2222")
 
-    (bg-diff-context    "#f3f3f3")
+    (bg-diff-context "#f3f3f3")
 
     ;; Paren match
 
-    (bg-paren-match        "#5fcfff")   ; maybe an accent color?
-    (bg-paren-expression   "#efd3f5")   ; maybe a bg accent color?
+    (bg-paren-match "#5fcfff")          ; maybe an accent color?
+    (bg-paren-expression "#efd3f5")     ; maybe a bg accent color?
     (underline-paren-match unspecified)
 
     ;; General mappings
 
-    (cursor fg-main)
-    (keybind blue-cooler)
-    (name magenta)
-    (identifier yellow-cooler)
+    (cursor accent-3)
+    (keybind accent-0)
+    (name accent-1)
+    (identifier accent-2)
 
     (err red)
     (warning yellow-warmer)
-    (info cyan-cooler)
+    (info cyan)
 
     (underline-err red-intense)
     (underline-warning yellow-intense)
@@ -175,23 +189,6 @@
     (bg-active-value bg-cyan-nuanced)
     (fg-active-value cyan-warmer)
 
-    ;; Code mappings
-
-    (builtin magenta-warmer)
-    (comment fg-dim)
-    (constant blue-cooler)
-    (docstring green-faint)
-    (fnname magenta)
-    (fnname-call pink)
-    (keyword magenta-cooler)
-    (preprocessor red-cooler)
-    (property cyan)
-    (rx-backslash magenta)
-    (rx-construct green-cooler)
-    (string blue-warmer)
-    (type cyan-cooler)
-    (variable cyan)
-    (variable-use slate)
 
     ;; Date mappings
 
@@ -279,6 +276,8 @@ Apply custom tweaks here before derived themes append their own palette partials
 (defconst suwi-base-light-custom-faces-partial
   '(
     `(tab-bar-tab-inactive ((,c :box (:line-width -2 :color ,bg-tab-bar) :foreground ,fg-dim :background ,bg-tab-bar)))
+    `(centaur-tabs-unselected ((,c :box (:line-width -2 :color ,bg-tab-other) :foreground ,fg-dim :background ,bg-tab-other)))
+    `(centaur-tabs-unselected-modified ((,c :inherit italic :box (:line-width -2 :color ,bg-tab-other) :foreground ,fg-dim :background ,bg-tab-other)))
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
     `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
