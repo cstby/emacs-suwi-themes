@@ -121,17 +121,18 @@ The `suwi-themes' are built on top of the `modus-themes'."
 (defconst suwi-common-custom-faces
   '(
     `(mode-line
-      (
-       (((supports :box t))
-        :box (:line-width -1 :color ,border-mode-line-active))
-       (t :underline ,border-mode-line-active)))
+      ((,c :inherit modus-themes-ui-variable-pitch
+           :background ,bg-mode-line-active
+           :foreground ,fg-mode-line-active
+           :box (:line-width -1 :color ,border-mode-line-active))))
+    `(mode-line-active
+      ((,c :inherit mode-line
+           :box (:line-width -1 :color ,bg-mode-line-active))))
     `(mode-line-inactive
       ((,c :inherit modus-themes-ui-variable-pitch
            :background ,bg-mode-line-inactive
-           :foreground ,fg-mode-line-inactive)
-       (((supports :box t))
-        :box (:line-width -1 :color ,border-mode-line-inactive))
-       (t :underline ,border-mode-line-inactive)))
+           :foreground ,fg-mode-line-inactive
+           :box (:line-width -1 :color ,border-mode-line-inactive))))
     `(org-table ((,c :foreground ,accent-1)))
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
