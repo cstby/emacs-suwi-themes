@@ -39,7 +39,7 @@
     ;; (bg-tab-other bg-active)
 
 
-    (bg-mode-line-active "efefef")
+    (bg-mode-line-active "#efefef")
     (fg-mode-line-active fg-main)
     (border-mode-line-active border)
 
