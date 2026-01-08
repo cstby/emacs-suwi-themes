@@ -62,14 +62,7 @@
     (accent-2 harbor-2)
     (accent-3 harbor-3)
 
-    (fg-main harbor-fg)
-    (keyword fg-main)
-    (string accent-3)
-    (type accent-0)
-    (fnname  accent-2)
-    (variabley accent-2)
-    (constant accent-0)
-    (builtin accent-0))
+    (fg-main harbor-fg))
   "Palette entries that give `suwi-harbor' its distinctive vibe.")
 
 (defconst suwi-harbor-custom-faces-partial nil

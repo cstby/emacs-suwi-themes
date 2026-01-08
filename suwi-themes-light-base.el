@@ -40,9 +40,9 @@
     (bg-tab-current bg-main)
     (bg-tab-other bg-tab-bar)
 
-    (bg-mode-line-active bg-tab-bar)
+    (bg-mode-line-active bg-dim)
     (fg-mode-line-active fg-main)
-    (border-mode-line-active bg-tab-bar)
+    (border-mode-line-active bg-mode-line-active)
 
     (bg-mode-line-inactive bg-main)
     (fg-mode-line-inactive fg-dim)
@@ -91,9 +91,9 @@
 
 
     (accent-0 blue-cooler)
-    (accent-1 magenta)
+    (accent-1 blue-cooler)
     (accent-2 cyan)
-    (accent-3 red-cooler)
+    (accent-3 magenta)
 
     ;; Font Lock
 
@@ -101,18 +101,18 @@
 
     (comment fg-dim)
     (docstring comment)
-    (string accent-2)
-    (keyword accent-0)
+    (string accent-3)
+    (keyword fg-main)
     (constant accent-0)
-    (fnname accent-1)
+    (fnname accent-2)
     (property accent-1)
-    (builtin fg-main)
+    (builtin accent-0)
     (fnname-call fg-main)
     (preprocessor fg-main)
     (rx-backslash fg-main)
     (rx-construct fg-main)
     (type accent-0)
-    (variable accent-1)
+    (variable accent-2)
     (variable-use fg-main)
 
 
