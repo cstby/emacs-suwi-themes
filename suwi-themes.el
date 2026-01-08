@@ -128,7 +128,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
 
     `(mode-line-active
       ((,c :inherit mode-line
-           :box (:line-width -1 :color ,bg-mode-line-active))))
+           :box (:line-width -1 :color ,border-mode-line-active))))
     `(mode-line-inactive
       ((,c :inherit modus-themes-ui-variable-pitch
            :background ,bg-mode-line-inactive

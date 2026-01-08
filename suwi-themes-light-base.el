@@ -34,7 +34,7 @@
 
     (bg-mode-line-active bg-tab-bar)
     (fg-mode-line-active fg-main)
-    (border-mode-line-active border)
+    (border-mode-line-active bg-tab-bar)
 
     (bg-mode-line-inactive bg-main)
     (fg-mode-line-inactive fg-dim)
