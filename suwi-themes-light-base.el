@@ -21,34 +21,26 @@
 
     (bg-main "#fafafa")
     (bg-dim "#f4f4f4")
-    (fg-main "#333333")
-    (fg-dim "#778899")
-    ;; fg-alt is used sparingly, and differentiation from fg-main seems unnecessary.
-    (fg-alt fg-main)
-    (bg-active "#c4c4c4")
-    (bg-inactive "#e0e0e0")
-    (border "#9f9f9f")
-
     (bg-tab-bar "#efefef")
-    (bg-tab-current "#ffffff")
+    (bg-inactive "#e0e0e0")
+    (bg-active "#c4c4c4")
+    (border "#9f9f9f")
+    (fg-dim "#778899")
+    (fg-main "#333333")
+
+    (fg-alt fg-main)
+    (bg-tab-current bg-main)
     (bg-tab-other bg-tab-bar)
 
-    ;; TODO: Decide if these are the right mappings
-    ;; (bg-tab-bar bg-alt)
-    ;; (bg-tab-current bg-main)
-    ;; (bg-tab-other bg-active)
-
-
-    (bg-mode-line-active "#efefef")
+    (bg-mode-line-active bg-tab-bar)
     (fg-mode-line-active fg-main)
     (border-mode-line-active border)
 
-    (bg-mode-line-inactive bg-main)     ;maybe change to inactive
-    (fg-mode-line-inactive "#585858")   ;maybe change to fg-dim
+    (bg-mode-line-inactive bg-main)
+    (fg-mode-line-inactive fg-dim)
     (border-mode-line-inactive border)
 
     ;; Common accent foregrounds
-    ;; TODO: add "intense"
 
     (red              "#cc0000")        ;   0°
     (red-warmer       "#cc4400")        ;  20°
@@ -115,42 +107,39 @@
     (variable accent-1)
     (variable-use fg-main)
 
-    (prompt yellow-cooler)
-
 
     ;; Special purpose
 
-    (bg-completion "#c0deff")
+    (bg-completion bg-magenta)
     (bg-hover "#b2e4dc")
     (bg-hover-secondary "#f5d0a0")
     (bg-hl-line "#dae5ec")
-    (bg-region "#bdbdbd")
-    (fg-region "#000000")
-
-    (modeline-err "#7f0000")
-    (modeline-warning "#5f0070")
-    (modeline-info "#002580")
+    (bg-region bg-active)
+    (fg-region fg-main)
 
     ;; Diffs
+
+    (setq glob)
 
     (bg-added "#c1f2d1")
     (bg-added-faint "#d8f8e1")
     (bg-added-refine "#aee5be")
-    (bg-added-fringe "#6cc06c")
+    (bg-added-fringe bg-added)
     (fg-added "#005000")
     (fg-added-intense "#006700")
 
-    (bg-changed "#ffdfa9")
-    (bg-changed-faint "#ffefbf")
-    (bg-changed-refine "#fac090")
-    (bg-changed-fringe "#d7c20a")
-    (fg-changed "#553d00")
-    (fg-changed-intense "#655000")
+    (bg-changed           "#d5d7ff")
+    (bg-changed-faint     "#e6e6ff")
+    (bg-changed-refine    "#babcef")
+    (bg-changed-fringe bg-changed)
+    (fg-changed           "#303099")
+    (fg-changed-intense   "#0303cc")
+
 
     (bg-removed "#ffd8d5")
     (bg-removed-faint "#ffe9e9")
     (bg-removed-refine "#f3b5af")
-    (bg-removed-fringe "#d84a4f")
+    (bg-removed-fringe bg-removed)
     (fg-removed "#8f1313")
     (fg-removed-intense "#aa2222")
 
@@ -158,8 +147,8 @@
 
     ;; Paren match
 
-    (bg-paren-match "#5fcfff")          ; maybe an accent color?
-    (bg-paren-expression "#efd3f5")     ; maybe a bg accent color?
+    (bg-paren-match cyan-faint)
+    (bg-paren-expression bg-cyan)
     (underline-paren-match unspecified)
 
     ;; General mappings
@@ -167,15 +156,19 @@
     (cursor accent-3)
     (keybind accent-0)
     (name accent-1)
-    (identifier accent-2)
+    (identifier accent-3)
 
     (err red)
     (warning yellow-warmer)
-    (info cyan)
+    (info cyan-warmer)
 
-    (underline-err red-intense)
-    (underline-warning yellow-intense)
-    (underline-note cyan-intense)
+    (modeline-err err)
+    (modeline-warning warning)
+    (modeline-info info)
+
+    (underline-err err)
+    (underline-warning warning)
+    (underline-note info)
 
     (bg-prominent-err bg-red-intense)
     (fg-prominent-err fg-main)
@@ -192,17 +185,17 @@
 
     ;; Date mappings
 
-    (date-common cyan)
-    (date-deadline red-cooler)
-    (date-deadline-subtle red-faint)
+    (date-common accent-2)
+    (date-deadline err)
+    (date-deadline-subtle err)
     (date-event fg-alt)
-    (date-holiday red)
-    (date-holiday-other blue)
+    (date-holiday accent-3)
+    (date-holiday-other accent-3)
     (date-range fg-alt)
-    (date-scheduled yellow)
-    (date-scheduled-subtle yellow-faint)
-    (date-weekday cyan)
-    (date-weekend magenta)
+    (date-scheduled accent-1)
+    (date-scheduled-subtle accent-1)
+    (date-weekday accent-2)
+    (date-weekend accent-3)
 
     ;; Link mappings
 
@@ -235,7 +228,7 @@
 
     ;; Prompt mappings
 
-    (fg-prompt cyan-cooler)
+    (fg-prompt accent-0)
 
     ;; Prose mappings
 
@@ -277,13 +270,7 @@ Apply custom tweaks here before derived themes append their own palette partials
   '(
     `(tab-bar-tab-inactive ((,c :box (:line-width -2 :color ,bg-tab-bar) :foreground ,fg-dim :background ,bg-tab-bar)))
     `(centaur-tabs-unselected ((,c :box (:line-width -2 :color ,bg-tab-other) :foreground ,fg-dim :background ,bg-tab-other)))
-    `(centaur-tabs-unselected-modified ((,c :inherit italic :box (:line-width -2 :color ,bg-tab-other) :foreground ,fg-dim :background ,bg-tab-other)))
-    `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
-    `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
-    `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
-    `(highlight-numbers-number ((,c :foreground ,accent-2)))
-    `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-main :weight bold)))
-    `(org-table ((,c :foreground ,accent-1))))
+    `(centaur-tabs-unselected-modified ((,c :inherit italic :box (:line-width -2 :color ,bg-tab-other) :foreground ,fg-dim :background ,bg-tab-other))))
   "Custom faces shared by all light suwi themes.")
 
 (defconst suwi-base-light-palette-full

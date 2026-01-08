@@ -125,6 +125,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
            :background ,bg-mode-line-active
            :foreground ,fg-mode-line-active
            :box (:line-width -1 :color ,border-mode-line-active))))
+
     `(mode-line-active
       ((,c :inherit mode-line
            :box (:line-width -1 :color ,bg-mode-line-active))))
@@ -133,17 +134,16 @@ The `suwi-themes' are built on top of the `modus-themes'."
            :background ,bg-mode-line-inactive
            :foreground ,fg-mode-line-inactive
            :box (:line-width -1 :color ,border-mode-line-inactive))))
-    `(org-table ((,c :foreground ,accent-1)))
+    `(hl-todo ((,c :foreground ,prose-todo)))
+    `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-main :weight bold)))
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
     `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
-    `(highlight-numbers-number ((,c :foreground ,accent-2)))
-    `(show-paren-match ((,c :background ,bg-paren-match :foreground ,fg-main :weight bold)))
-    `(vertical-border ((,c :foreground ,border))))
+    )
   "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
 
 
-(defconst suwi-themes-light '(suwi-walo suwi-jazz)
+(defconst suwi-themes-light '(suwi-walo suwi-jazz suwi-harbor)
   "Light Suwi theme symbols.")
 
 (defconst suwi-themes-dark '(suwi-pimeja)
@@ -156,6 +156,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
 (defconst suwi-themes-with-properties
   '((suwi-walo suwi-themes "Sweet vivid Suwi light theme." light modus-operandi-palette suwi-walo-palette suwi-walo-palette-overrides)
     (suwi-jazz suwi-themes "Retro pastel Suwi light theme." light modus-operandi-palette suwi-jazz-palette suwi-jazz-palette-overrides)
+    (suwi-harbor suwi-themes "Teal and pink Suwi light theme." light modus-operandi-palette suwi-harbor-palette suwi-harbor-palette-overrides)
     (suwi-pimeja suwi-themes "Moody neon Suwi dark theme." dark modus-vivendi-palette suwi-pimeja-palette suwi-pimeja-palette-overrides))
   "Metadata tuples describing each Suwi theme.")
 
