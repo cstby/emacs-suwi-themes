@@ -20,15 +20,23 @@
     ;; Basic values
 
     (bg-main "#fafafa")
-    (bg-dim "#f4f4f4")
-    (bg-tab-bar "#efefef")
+    (bg-dim "#efefef")
     (bg-inactive "#e0e0e0")
     (bg-active "#c4c4c4")
     (border "#9f9f9f")
     (fg-dim "#778899")
     (fg-main "#333333")
 
+    (fringe bg-main)
+
+    (bg-hl-line bg-dim)
+    (bg-completion bg-hl-line)
+
+    (bg-region bg-inactive)
+    (fg-region fg-main)
+
     (fg-alt fg-main)
+    (bg-tab-bar bg-dim)
     (bg-tab-current bg-main)
     (bg-tab-other bg-tab-bar)
 
@@ -110,12 +118,8 @@
 
     ;; Special purpose
 
-    (bg-completion bg-magenta)
-    (bg-hover "#b2e4dc")
-    (bg-hover-secondary "#f5d0a0")
-    (bg-hl-line "#dae5ec")
-    (bg-region bg-active)
-    (fg-region fg-main)
+    (bg-hover bg-cyan)
+    (bg-hover-secondary bg-yellow)
 
     ;; Diffs
 
