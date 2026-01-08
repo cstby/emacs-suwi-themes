@@ -139,6 +139,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
     `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
+    `(corfu-default ((,c :inherit modus-themes-fixed-pitch :background ,bg-main)))
     )
   "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
 
