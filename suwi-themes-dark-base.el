@@ -17,113 +17,83 @@
 (require 'suwi-themes)
 
 (defconst suwi-base-dark-palette
-  '((accent-0 "#ff7ab3")
-    (accent-1 "#f7b733")
-    (accent-2 "#29c7ac")
-    (accent-3 "#7b8cff")
+  '(
 
-    (cursor accent-0)
-    (bg-main "#11151c")
-    (bg-dim "#181f27")
-    (bg-alt "#1d2430")
-    (fg-main "#f6f4f2")
-    (fg-dim "#c5c3c0")
-    (fg-alt "#f4c2ff")
-    (bg-active "#2a3142")
-    (bg-inactive "#171c24")
-    (border "#3c4457")
+    ;; (bg-main          "#1e1e1e")
+    ;; (bg-dim           "#2c2c2c")
+    ;; (bg-inactive      "#353535")
+    ;; (bg-active        "#464646")
+    ;; (border           "#5a5d66")
+    ;; (fg-dim           "#9aa3b2")
+    ;; (fg-main          "#d6d7db")
 
-    (red "#ff5f6d")
-    (red-warmer "#ff8560")
-    (red-cooler "#ff4f96")
-    (red-faint "#c85a6c")
-    (green "#2bc7a3")
-    (green-warmer "#55d46e")
-    (green-cooler "#2abed8")
-    (green-faint "#4a9f8d")
-    (yellow "#f4c146")
-    (yellow-warmer "#ffab4d")
-    (yellow-cooler "#ff9f72")
-    (yellow-faint "#d38b4e")
-    (blue "#79a7ff")
-    (blue-warmer "#9f8bff")
-    (blue-cooler "#58b0ff")
-    (blue-faint "#7c91d9")
-    (magenta "#e58bff")
-    (magenta-warmer "#ff8ff0")
-    (magenta-cooler "#c38bff")
-    (magenta-faint "#b07cce")
-    (cyan "#4bd8ff")
-    (cyan-warmer "#6ccfff")
-    (cyan-cooler "#32c1ff")
-    (cyan-faint "#7cc5e5")
+    (bg-main          "#050505")
+    (bg-dim           "#2b2b2b")
+    (bg-inactive      "#353535")
+    (bg-active        "#464646")
+    (border           "#606060")
+    (fg-dim           "#778899")
+    (fg-main          "#fafafa")
 
-    (bg-red-intense "#43141d")
-    (bg-green-intense "#103c2d")
-    (bg-yellow-intense "#3f2e00")
-    (bg-blue-intense "#112347")
-    (bg-magenta-intense "#3a1d4a")
-    (bg-cyan-intense "#062c38")
+    (red              "#ff3333")        ;   0°
+    (red-warmer       "#ff7733")        ;  20°
+    (yellow-warmer    "#ff8833")        ;  40°
+    (yellow           "#ffff33")        ;  60°
+    (yellow-cooler    "#88ff33")        ;  80°
+    (green-warmer     "#77ff33")        ; 100°
+    (green            "#33ff33")        ; 120°
+    (green-cooler     "#33ff77")        ; 140°
+    (cyan-cooler      "#33ff88")        ; 160°
+    (cyan             "#33ffff")        ; 180°
+    (cyan-warmer      "#3388ff")        ; 200°
+    (blue-cooler      "#3377ff")        ; 220°
+    (blue             "#3333ff")        ; 240°
+    (blue-warmer      "#7733ff")        ; 260°
+    (magenta-cooler   "#8833ff")        ; 280°
+    (magenta          "#ff33ff")        ; 300°
+    (magenta-warmer   "#ff3388")        ; 320°
+    (red-cooler       "#ff3377")        ; 340°
 
-    (bg-red-subtle "#2a131b")
-    (bg-green-subtle "#12251f")
-    (bg-yellow-subtle "#2a1f0b")
-    (bg-blue-subtle "#141c2c")
-    (bg-magenta-subtle "#1d1428")
-    (bg-cyan-subtle "#102228")
 
-    (bg-added "#0f3a2d")
-    (bg-added-faint "#0c2d24")
-    (bg-added-refine "#13503b")
-    (fg-added "#76f7c5")
+    (red-faint        "#7a1f1f")
+    (yellow-faint     "#7a7a1f")
+    (green-faint      "#217a1f")
+    (cyan-faint       "#1f7b7b")
+    (blue-faint       "#1f1f7a")
+    (magenta-faint    "#7a1f7a")
 
-    (bg-changed "#362905")
-    (bg-changed-faint "#2b2108")
-    (bg-changed-refine "#4c3a06")
-    (fg-changed "#facf73")
+    (bg-red           "#3e0f0f")
+    (bg-yellow        "#3e3e0f")
+    (bg-green         "#0f3e0f")
+    (bg-cyan          "#0f3e3e")
+    (bg-blue          "#0f0f3e")
+    (bg-magenta       "#3e0f3e")
 
-    (bg-removed "#4a1822")
-    (bg-removed-faint "#381017")
-    (bg-removed-refine "#6d2230")
-    (fg-removed "#ff8da4")
 
-    (bg-mode-line-active "#2f3546")
-    (fg-mode-line-active "#fcecff")
-    (border-mode-line-active border)
-    (bg-mode-line-inactive "#1c202b")
-    (fg-mode-line-inactive "#9ca1b7")
-    (border-mode-line-inactive border)
+    (bg-added           "#00381f")
+    (bg-added-faint     "#002910")
+    (bg-added-refine    "#034f2f")
+    (bg-added-fringe    "#237f3f")
+    (fg-added           "#a0e0a0")
+    (fg-added-intense   "#80e080")
 
-    (bg-hl-line "#1a202d")
-    (bg-region "#252d3d")
-    (bg-paren-match "#21455a")
-    (bg-prominent-note "#123831")
-    (bg-prominent-err "#3f1a2a")
-    (bg-prominent-warning "#3a2b12")
+    (bg-added           "#004254")
+    (bg-added-faint     "#003042")
+    (bg-added-refine    "#004f7f")
+    (bg-added-fringe    "#008fcf")
+    (fg-added           "#9fdfdf")
+    (fg-added-intense   "#50c0ef")
 
-    (rainbow-0 accent-0)
-    (rainbow-1 accent-1)
-    (rainbow-2 accent-2)
-    (rainbow-3 accent-3)
-    (rainbow-4 "#ff82d7")
-    (rainbow-5 "#9ad4ff")
-    (rainbow-6 "#ff5f96")
-    (rainbow-7 "#45c9ff")
-    (rainbow-8 "#ffb7ff")
+    (bg-removed         "#4f1119")
+    (bg-removed-faint   "#380a0f")
+    (bg-removed-refine  "#781a1f")
+    (bg-removed-fringe  "#b81a1f")
+    (fg-removed         "#ffbfbf")
+    (fg-removed-intense "#ff9095")
 
-    (mail-cite-0 "#f57fb0")
-    (mail-cite-1 "#7aa5ff")
-    (mail-cite-2 "#42c4f5")
-    (mail-cite-3 "#4fd6ab")
 
-    (prompt "#ff8fd1")
-    (keyword "#c38bff")
-    (string "#f3b35d")
-    (comment "#8790ad")
-    (type "#58d7ff")
-    (fnname accent-0)
-    (variable accent-3)
-    (constant "#ff7f9d"))
+
+  )
   "Base dark palette shared by all Suwi derivatives before theme overrides.")
 
 (defcustom suwi-base-dark-overrides nil
