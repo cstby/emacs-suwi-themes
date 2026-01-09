@@ -114,8 +114,187 @@ The `suwi-themes' are built on top of the `modus-themes'."
     (pink        magenta)
 
 
+    ;; Greyscale remappings
 
-    )
+    (fringe bg-main)
+
+    (bg-hl-line bg-dim)
+    (bg-completion bg-hl-line)
+
+    (bg-region bg-inactive)
+    (fg-region fg-main)
+
+    (fg-alt fg-main)
+    (bg-tab-bar bg-dim)
+    (bg-tab-current bg-main)
+    (bg-tab-other bg-tab-bar)
+
+    (bg-mode-line-active bg-dim)
+    (fg-mode-line-active fg-main)
+    (border-mode-line-active bg-mode-line-active)
+
+    (bg-mode-line-inactive bg-main)
+    (fg-mode-line-inactive fg-dim)
+    (border-mode-line-inactive border)
+
+    ;; Code Mappings
+
+    (comment fg-dim)
+    (docstring comment)
+    (string accent-3)
+    (keyword fg-main)
+    (constant accent-0)
+    (fnname accent-2)
+    (property accent-1)
+    (builtin accent-0)
+    (fnname-call fg-main)
+    (preprocessor fg-main)
+    (rx-backslash fg-main)
+    (rx-construct fg-main)
+    (type accent-0)
+    (variable accent-2)
+    (variable-use fg-main)
+
+    ;; General Mappings
+
+    (cursor accent-3)
+    (keybind accent-0)
+    (name accent-1)
+    (identifier accent-3)
+
+    ;; Error, Warning, Info
+
+    (err red)
+    (warning yellow-warmer)
+    (info cyan-warmer)
+
+    (modeline-err err)
+    (modeline-warning warning)
+    (modeline-info info)
+
+    (underline-err err)
+    (underline-warning warning)
+    (underline-note info)
+
+    (bg-prominent-err bg-red-intense)
+    (fg-prominent-err fg-main)
+    (bg-prominent-warning bg-yellow-intense)
+    (fg-prominent-warning fg-main)
+    (bg-prominent-note bg-cyan-intense)
+    (fg-prominent-note fg-main)
+
+    (bg-active-argument bg-yellow-nuanced)
+    (fg-active-argument yellow-warmer)
+    (bg-active-value bg-cyan-nuanced)
+    (fg-active-value cyan-warmer)
+
+    ;; Date mappings
+
+    (date-common accent-2)
+    (date-deadline err)
+    (date-deadline-subtle err)
+    (date-event fg-alt)
+    (date-holiday accent-3)
+    (date-holiday-other accent-3)
+    (date-range fg-alt)
+    (date-scheduled accent-1)
+    (date-scheduled-subtle accent-1)
+    (date-weekday accent-2)
+    (date-weekend accent-3)
+
+    ;; Diffs
+
+
+
+    ;; Accent mappings
+    ;; Gives a theme its vibe.
+
+
+    (accent-0 blue-cooler)
+    (accent-1 blue-cooler)
+    (accent-2 cyan)
+    (accent-3 magenta)
+
+
+
+
+    ;; Special purpose
+
+    (bg-hover bg-cyan)
+    (bg-hover-secondary bg-yellow)
+
+
+
+    (bg-diff-context "#f3f3f3")
+
+    ;; Paren match
+
+    (bg-paren-match cyan-faint)
+    (bg-paren-expression bg-cyan)
+    (underline-paren-match unspecified)
+
+    ;; Link mappings
+
+    (fg-link blue-warmer)
+    (underline-link blue-warmer)
+    (fg-link-symbolic cyan)
+    (underline-link-symbolic cyan)
+    (fg-link-visited magenta)
+    (underline-link-visited magenta)
+
+    ;; Mail mappings
+
+    (mail-cite-0 blue-faint)
+    (mail-cite-1 yellow-warmer)
+    (mail-cite-2 cyan-cooler)
+    (mail-cite-3 red-cooler)
+    (mail-part cyan)
+    (mail-recipient magenta-cooler)
+    (mail-subject magenta-warmer)
+    (mail-other magenta-faint)
+
+    ;; Mark mappings
+
+    (bg-mark-delete bg-red-subtle)
+    (fg-mark-delete red)
+    (bg-mark-select bg-cyan-subtle)
+    (fg-mark-select cyan)
+    (bg-mark-other bg-yellow-subtle)
+    (fg-mark-other yellow)
+
+    ;; Prompt mappings
+
+    (fg-prompt accent-0)
+
+    ;; Prose mappings
+
+
+    (fg-prose-code cyan-cooler)
+    (fg-prose-macro magenta-cooler)
+    (fg-prose-verbatim magenta-warmer)
+    (prose-done green)
+    (prose-todo red)
+    (prose-metadata fg-dim)
+    (prose-metadata-value fg-alt)
+    (prose-table fg-alt)
+    (prose-table-formula magenta-warmer)
+    (prose-tag magenta-faint)
+
+
+
+    ;; Search mappings
+    ;; Used for anzu, avy, isearch etc.
+
+    (bg-search-current bg-yellow-intense)
+    (bg-search-lazy bg-cyan-intense)
+    (bg-search-static bg-magenta-subtle)
+    (bg-search-replace bg-red-intense)
+
+    (bg-search-rx-group-0 bg-blue-intense)
+    (bg-search-rx-group-1 bg-green-intense)
+    (bg-search-rx-group-2 bg-red-subtle)
+    (bg-search-rx-group-3 bg-magenta-subtle))
+
   "Common palette shared by every Suwi theme, to be layered on a modus theme palette.")
 
 (defconst suwi-common-custom-faces
@@ -139,8 +318,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
     `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
-    `(corfu-default ((,c :inherit modus-themes-fixed-pitch :background ,bg-main)))
-    )
+    `(corfu-default ((,c :inherit modus-themes-fixed-pitch :background ,bg-main))))
   "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
 
 
