@@ -318,7 +318,14 @@ The `suwi-themes' are built on top of the `modus-themes'."
     `(diff-hl-insert ((,c :background ,bg-added :foreground ,fg-added)))
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
     `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
-    `(corfu-default ((,c :inherit modus-themes-fixed-pitch :background ,bg-main))))
+    `(corfu-default ((,c :inherit modus-themes-fixed-pitch :background ,bg-main)))
+    `(magit-diff-file-heading ((,c :inherit modus-themes-bold :foreground ,accent-2)))
+    `(magit-diff-file-heading-highlight ((,c :inherit modus-themes-bold :background ,bg-dim :foreground ,accent-2)))
+    `(magit-diff-hunk-heading ((,c :foreground ,fg-dim :background ,bg-main :box (:line-width -1 :color ,border-mode-line-inactive))))
+    `(magit-diff-hunk-heading-highlight ((,c :inherit modus-themes-bold :foreground ,fg-main :background ,bg-dim)))
+    `(magit-diff-added ((,c :background ,bg-added-faint :foreground ,fg-dim)))
+    `(magit-diff-removed ((,c :background ,bg-removed-faint :foreground ,fg-dim)))
+)
   "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
 
 
