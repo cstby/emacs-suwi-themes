@@ -1,0 +1,71 @@
+;;; suwi-unu-theme.el --- Moody dark test theme -*- lexical-binding:t -*-
+
+;; Copyright (C) 2025  Carl
+
+;; Author: Carl
+;; Maintainer: Carl
+;; Package-Requires: ((emacs "28.1") (modus-themes "5.0.0"))
+
+;;; Commentary:
+;;
+;; First dark representative of the Suwi theme family.  Builds on the
+;; shared dark base palette while nudging a few key accents toward a
+;; neon “unu” mood.
+
+;;; Code:
+
+(require 'suwi-themes-dark-base)
+
+(defconst suwi-unu-palette-partial
+  '(
+    (unu-fg "#efedf7")
+    (unu-0 "#aeabed")
+    (unu-2 "#8a80ff")
+    (unu-3 "#7866ff")
+
+    (accent-0 unu-0)
+    (accent-1 unu-0)
+    (accent-2 unu-2)
+    (accent-3 unu-3)
+
+    (fg-main unu-fg)
+
+
+    )
+  "Palette entries that give `suwi-unu' its distinctive vibe.")
+
+(defconst suwi-unu-custom-faces-partial
+  '()
+  "Custom faces unique to `suwi-unu'.")
+
+(defcustom suwi-unu-palette-overrides nil
+  "User palette overrides evaluated after `suwi-unu-palette'."
+  :group 'suwi-themes
+  :type '(repeat (list symbol (choice symbol string))))
+
+(defconst suwi-unu-palette
+  (append suwi-unu-palette-partial suwi-base-dark-palette-full)
+  "Complete palette for `suwi-unu'.")
+
+(defconst suwi-unu-custom-faces
+  (append suwi-base-dark-all-custom-faces suwi-unu-custom-faces-partial)
+  "Complete custom-face list for `suwi-unu'.")
+
+(modus-themes-theme
+ 'suwi-unu
+ 'suwi-themes
+ "Moody dark palette for the Suwi framework."
+ 'dark
+ 'modus-vivendi-palette
+ 'suwi-unu-palette
+ 'suwi-unu-palette-overrides
+ 'suwi-unu-custom-faces)
+
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-directory load-file-name)))
+
+(provide 'suwi-unu-theme)
+
+;;; suwi-unu-theme.el ends here
