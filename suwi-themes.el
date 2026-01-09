@@ -225,7 +225,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
 
 
 
-    (bg-diff-context "#f3f3f3")
+    (bg-diff-context bg-dim)
 
     ;; Paren match
 
