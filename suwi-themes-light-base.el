@@ -62,27 +62,27 @@
 
     ;; Diffs
 
-    (bg-added "#c1f2d1")
-    (bg-added-faint "#d8f8e1")
-    (bg-added-refine "#aee5be")
-    (bg-added-fringe bg-added)
-    (fg-added "#005000")
+    (bg-added         "#c1f2d1")
+    (bg-added-faint   "#d8f8e1")
+    (bg-added-refine  "#aee5be")
+    (fg-added         "#005000")
     (fg-added-intense "#006700")
+    (bg-added-fringe   bg-added)
 
     (bg-changed           "#d5d7ff")
     (bg-changed-faint     "#e6e6ff")
     (bg-changed-refine    "#babcef")
-    (bg-changed-fringe bg-changed)
     (fg-changed           "#303099")
     (fg-changed-intense   "#0303cc")
+    (bg-changed-fringe    bg-changed)
 
 
-    (bg-removed "#ffd8d5")
-    (bg-removed-faint "#ffe9e9")
-    (bg-removed-refine "#f3b5af")
-    (bg-removed-fringe bg-removed)
-    (fg-removed "#8f1313")
+    (bg-removed-faint   "#ffe9e9")
+    (bg-removed         "#ffd8d5")
+    (bg-removed-refine  "#f3b5af")
+    (fg-removed         "#8f1313")
     (fg-removed-intense "#aa2222")
+    (bg-removed-fringe bg-removed)
 
 
     )
