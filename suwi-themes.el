@@ -23,6 +23,40 @@ The `suwi-themes' are built on top of the `modus-themes'."
   :group 'modus-themes
   :prefix "suwi-")
 
+(defvar suwi-themes-light nil
+  "Light Suwi theme symbols.")
+
+(defvar suwi-themes-dark nil
+  "Dark Suwi theme symbols.")
+
+(defvar suwi-themes-items nil
+  "All Suwi theme symbols.")
+
+(defvar suwi-themes-with-properties nil
+  "Metadata tuples describing each Suwi theme.")
+
+(defun suwi-themes--register-theme-metadata (theme description background-mode
+                                                   core-palette palette-symbol
+                                                   palette-overrides-symbol)
+  "Register metadata for THEME with the Suwi theme collection."
+  (let ((entry (list theme
+                     'suwi-themes
+                     description
+                     background-mode
+                     core-palette
+                     palette-symbol
+                     palette-overrides-symbol)))
+    (setq suwi-themes-with-properties
+          (append (assq-delete-all theme suwi-themes-with-properties)
+                  (list entry)))
+    (setq suwi-themes-light (delq theme suwi-themes-light))
+    (setq suwi-themes-dark (delq theme suwi-themes-dark))
+    (pcase background-mode
+      ('light (setq suwi-themes-light (append suwi-themes-light (list theme))))
+      ('dark (setq suwi-themes-dark (append suwi-themes-dark (list theme))))
+      (_ (error "Unsupported background mode %S" background-mode)))
+    (setq suwi-themes-items (append suwi-themes-light suwi-themes-dark))))
+
 (defmacro suwi-define-theme (theme description background-mode core-palette
                                    base-palette base-custom-faces)
   "Define boilerplate for THEME using explicit Suwi palette composition.
@@ -55,7 +89,15 @@ to the theme-local partial palette and custom-face symbols."
         ',core-palette
         ',palette-symbol
         ',palette-overrides-symbol
-        ',custom-faces-symbol))))
+        ',custom-faces-symbol)
+       (suwi-themes--register-theme-metadata
+        ',theme
+        ,description
+        ',background-mode
+        ',core-palette
+        ',palette-symbol
+        ',palette-overrides-symbol)
+       (modus-themes-register ',theme))))
 
 (defconst suwi-common-palette
   '(
@@ -362,37 +404,6 @@ to the theme-local partial palette and custom-face symbols."
 )
   "Common custom faces for all suwi themes, to be layered on top of `modus-themes-faces'.")
 
-
-(defconst suwi-themes-light '(suwi-walo suwi-jazz suwi-harbor)
-  "Light Suwi theme symbols.")
-
-(defconst suwi-themes-dark '(suwi-pimeja suwi-unu)
-  "Dark Suwi theme symbols.")
-
-(defconst suwi-themes-items
-  (append suwi-themes-light suwi-themes-dark)
-  "All Suwi theme symbols.")
-
-(defconst suwi-themes-with-properties
-  '((suwi-walo suwi-themes "Sweet vivid Suwi light theme." light modus-operandi-palette suwi-walo-palette suwi-walo-palette-overrides)
-    (suwi-jazz suwi-themes "Retro pastel Suwi light theme." light modus-operandi-palette suwi-jazz-palette suwi-jazz-palette-overrides)
-    (suwi-harbor suwi-themes "Teal and pink Suwi light theme." light modus-operandi-palette suwi-harbor-palette suwi-harbor-palette-overrides)
-    (suwi-pimeja suwi-themes "Moody neon Suwi dark theme." dark modus-vivendi-palette suwi-pimeja-palette suwi-pimeja-palette-overrides)
-    (suwi-unu suwi-themes "Moody violet Suwi dark theme." dark modus-vivendi-palette suwi-unu-palette suwi-unu-palette-overrides))
-  "Metadata tuples describing each Suwi theme.")
-
-(defvar suwi-themes--declared-p nil)
-
-(defun suwi-themes-declare-themes ()
-  "Declare and register every theme in `suwi-themes-with-properties'."
-  (unless suwi-themes--declared-p
-    (dolist (entry suwi-themes-with-properties)
-      (apply #'modus-themes-declare entry)
-      (modus-themes-register (car entry)))
-    (setq suwi-themes--declared-p t)))
-
-(suwi-themes-declare-themes)
-
 (defvar suwi-themes--aliased-p nil)
 
 (defun suwi-themes-define-alias (suffix &optional is-function)
@@ -438,8 +449,24 @@ manage `suwi-themes-italic-constructs' yourself."
 (defalias 'suwi-themes-with-colors 'modus-themes-with-colors
   "Invoke BODY with the current Suwi palette bound.")
 
+(defvar suwi-themes--theme-files-loaded-p nil
+  "Non-nil when all concrete Suwi theme files have been loaded.")
+
+(defun suwi-themes--ensure-theme-files-loaded ()
+  "Load all concrete Suwi theme files exactly once."
+  (unless suwi-themes--theme-files-loaded-p
+    (require 'suwi-themes-light-base)
+    (require 'suwi-themes-dark-base)
+    (require 'suwi-walo-theme)
+    (require 'suwi-jazz-theme)
+    (require 'suwi-harbor-theme)
+    (require 'suwi-pimeja-theme)
+    (require 'suwi-unu-theme)
+    (setq suwi-themes--theme-files-loaded-p t)))
+
 (defun suwi-themes--sorted-items ()
   "Return Suwi themes sorted light-first for display commands."
+  (suwi-themes--ensure-theme-files-loaded)
   (modus-themes-sort (copy-sequence suwi-themes-items) 'light))
 
 ;;;###autoload
