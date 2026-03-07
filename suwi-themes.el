@@ -269,16 +269,16 @@ The `suwi-themes' are built on top of the `modus-themes'."
     ;; Prose mappings
 
 
-    (fg-prose-code cyan-cooler)
-    (fg-prose-macro magenta-cooler)
-    (fg-prose-verbatim magenta-warmer)
+    (fg-prose-code accent-0)
+    (fg-prose-macro accent-1)
+    (fg-prose-verbatim accent-3)
     (prose-done green)
     (prose-todo red)
     (prose-metadata fg-dim)
     (prose-metadata-value fg-alt)
     (prose-table fg-alt)
-    (prose-table-formula magenta-warmer)
-    (prose-tag magenta-faint)
+    (prose-table-formula accent-3)
+    (prose-tag accent-3)
 
 
 
