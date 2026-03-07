@@ -36,10 +36,16 @@ The `suwi-themes' are built on top of the `modus-themes'."
 (defvar suwi-themes-with-properties nil
   "Metadata tuples describing each Suwi theme.")
 
+;; Declared here so byte-compilation knows about the alias target
+;; before `suwi-themes-define-option-aliases' runs.
+(defvar suwi-themes-italic-constructs nil)
+
 (defun suwi-themes--register-theme-metadata (theme description background-mode
                                                    core-palette palette-symbol
                                                    palette-overrides-symbol)
-  "Register metadata for THEME with the Suwi theme collection."
+  "Register metadata for THEME.
+DESCRIPTION, BACKGROUND-MODE, CORE-PALETTE, PALETTE-SYMBOL, and
+PALETTE-OVERRIDES-SYMBOL are recorded in the Suwi theme registry."
   (let ((entry (list theme
                      'suwi-themes
                      description
@@ -101,7 +107,7 @@ to the theme-local partial palette and custom-face symbols."
        (modus-themes-register ',theme))))
 
 (defmacro suwi-define-light-theme (theme description)
-  "Define THEME as a light Suwi theme with the shared light base."
+  "Define THEME as a light Suwi theme with DESCRIPTION and the shared light base."
   (declare (indent defun))
   `(suwi-define-theme ,theme
      ,description
@@ -111,7 +117,7 @@ to the theme-local partial palette and custom-face symbols."
      suwi-base-light-all-custom-faces))
 
 (defmacro suwi-define-dark-theme (theme description)
-  "Define THEME as a dark Suwi theme with the shared dark base."
+  "Define THEME as a dark Suwi theme with DESCRIPTION and the shared dark base."
   (declare (indent defun))
   `(suwi-define-theme ,theme
      ,description
@@ -124,7 +130,7 @@ to the theme-local partial palette and custom-face symbols."
 
 (defun suwi-themes-define-alias (suffix &optional is-function)
   "Alias `modus-themes-SUFFIX' as `suwi-themes-SUFFIX'.
-If IS-FUNCTION is non-nil, alias as a function."
+If IS-FUNCTION is non-nil, alias SUFFIX as a function."
   (let ((modus-symbol (intern-soft (format "modus-themes-%s" suffix)))
         (suwi-symbol (intern (format "suwi-themes-%s" suffix))))
     (when (symbolp modus-symbol)
@@ -193,7 +199,7 @@ manage `suwi-themes-italic-constructs' yourself."
   :group 'suwi-themes)
 
 (cl-defmethod modus-themes-get-themes (&context (suwi-themes-take-over-modus-themes-mode (eql t)))
-  "Return only Suwi themes when `suwi-themes-take-over-modus-themes-mode' is enabled."
+  "Return only Suwi themes when SUWI-THEMES-TAKE-OVER-MODUS-THEMES-MODE is enabled."
   (suwi-themes--sorted-items))
 
 ;;;###autoload (autoload 'suwi-themes-toggle "suwi-themes")

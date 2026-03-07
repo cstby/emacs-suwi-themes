@@ -90,7 +90,8 @@
 
 (defcustom suwi-base-light-overrides nil
   "Overrides for entries in `suwi-base-light-palette'.
-Apply custom tweaks here before derived themes append their own palette partials."
+Apply custom tweaks here before derived themes append their own
+palette partials."
   :group 'suwi-themes
   :type '(repeat (list symbol (choice symbol string))))
 

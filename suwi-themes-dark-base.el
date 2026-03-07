@@ -98,7 +98,8 @@
 
 (defcustom suwi-base-dark-overrides nil
   "Overrides for entries in `suwi-base-dark-palette'.
-Apply custom tweaks here before derived themes append their own palette partials."
+Apply custom tweaks here before derived themes append their own
+palette partials."
   :group 'suwi-themes
   :type '(repeat (list symbol (choice symbol string))))
 
