@@ -77,12 +77,12 @@
     (fg-added           "#a0e0a0")
     (fg-added-intense   "#80e080")
 
-    (bg-added           "#004254")
-    (bg-added-faint     "#003042")
-    (bg-added-refine    "#004f7f")
-    (bg-added-fringe    "#008fcf")
-    (fg-added           "#9fdfdf")
-    (fg-added-intense   "#50c0ef")
+    (bg-changed         "#004254")
+    (bg-changed-faint   "#003042")
+    (bg-changed-refine  "#004f7f")
+    (bg-changed-fringe  "#008fcf")
+    (fg-changed         "#9fdfdf")
+    (fg-changed-intense "#50c0ef")
 
     (bg-removed         "#4f1119")
     (bg-removed-faint   "#380a0f")

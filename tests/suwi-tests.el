@@ -78,6 +78,15 @@
   "Return resolved value of COLOR in PALETTE."
   (modus-themes--retrieve-palette-value color palette))
 
+(defun suwi-tests--palette-keys (palette)
+  "Return the keys defined in PALETTE."
+  (mapcar #'car palette))
+
+(defun suwi-tests--missing-palette-keys (reference palette)
+  "Return keys present in REFERENCE but absent from PALETTE."
+  (seq-remove (lambda (key) (assq key palette))
+              (suwi-tests--palette-keys reference)))
+
 (ert-deftest suwi-tests-active-themes-include-explicit-keys ()
   "Theme palettes retain each theme's explicit palette keys."
   (dolist (theme suwi-tests-active-themes)
@@ -108,6 +117,17 @@
                  '(suwi-walo suwi-jazz suwi-harbor suwi-pimeja suwi-unu)))
   (should (equal (mapcar #'car suwi-themes-with-properties)
                  suwi-themes-items)))
+
+(ert-deftest suwi-tests-base-palettes-cover-modus-keywords ()
+  "Composed Suwi base palettes provide every Modus palette keyword."
+  (should-not
+   (suwi-tests--missing-palette-keys
+    modus-themes-operandi-palette
+    suwi-base-light-palette-full))
+  (should-not
+   (suwi-tests--missing-palette-keys
+    modus-themes-vivendi-palette
+    suwi-base-dark-palette-full)))
 
 (ert-deftest suwi-tests-take-over-mode-lists-only-suwi-themes ()
   "Take-over mode returns the Suwi theme set in light-first order."
