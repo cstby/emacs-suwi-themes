@@ -24,28 +24,12 @@
   '()
   "Custom faces unique to `suwi-pimeja'.")
 
-(defcustom suwi-pimeja-palette-overrides nil
-  "User palette overrides evaluated after `suwi-pimeja-palette'."
-  :group 'suwi-themes
-  :type '(repeat (list symbol (choice symbol string))))
-
-(defconst suwi-pimeja-palette
-  (append suwi-pimeja-palette-partial suwi-base-dark-palette-full)
-  "Complete palette for `suwi-pimeja'.")
-
-(defconst suwi-pimeja-custom-faces
-  (append suwi-base-dark-all-custom-faces suwi-pimeja-custom-faces-partial)
-  "Complete custom-face list for `suwi-pimeja'.")
-
-(modus-themes-theme
- 'suwi-pimeja
- 'suwi-themes
- "Moody dark palette for the Suwi framework."
- 'dark
- 'modus-vivendi-palette
- 'suwi-pimeja-palette
- 'suwi-pimeja-palette-overrides
- 'suwi-pimeja-custom-faces)
+(suwi-define-theme suwi-pimeja
+  "Moody dark palette for the Suwi framework."
+  dark
+  modus-vivendi-palette
+  suwi-base-dark-palette-full
+  suwi-base-dark-all-custom-faces)
 
 ;;;###autoload
 (when load-file-name

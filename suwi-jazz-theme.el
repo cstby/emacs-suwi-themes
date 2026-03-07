@@ -79,28 +79,12 @@
 (defconst suwi-jazz-custom-faces-partial nil
   "No extra custom faces; rely on the shared light base.")
 
-(defcustom suwi-jazz-palette-overrides nil
-  "User palette overrides evaluated after `suwi-jazz-palette'."
-  :group 'suwi-themes
-  :type '(repeat (list symbol (choice symbol string))))
-
-(defconst suwi-jazz-palette
-  (append suwi-jazz-palette-partial suwi-base-light-palette-full)
-  "Complete palette for `suwi-jazz'.")
-
-(defconst suwi-jazz-custom-faces
-  (append suwi-base-light-all-custom-faces suwi-jazz-custom-faces-partial)
-  "Complete custom-face list for `suwi-jazz'.")
-
-(modus-themes-theme
- 'suwi-jazz
- 'suwi-themes
- "Retro pastel palette for the Suwi framework."
- 'light
- 'modus-operandi-palette
- 'suwi-jazz-palette
- 'suwi-jazz-palette-overrides
- 'suwi-jazz-custom-faces)
+(suwi-define-theme suwi-jazz
+  "Retro pastel palette for the Suwi framework."
+  light
+  modus-operandi-palette
+  suwi-base-light-palette-full
+  suwi-base-light-all-custom-faces)
 
 ;;;###autoload
 (when load-file-name

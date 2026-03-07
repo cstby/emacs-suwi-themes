@@ -23,6 +23,40 @@ The `suwi-themes' are built on top of the `modus-themes'."
   :group 'modus-themes
   :prefix "suwi-")
 
+(defmacro suwi-define-theme (theme description background-mode core-palette
+                                   base-palette base-custom-faces)
+  "Define boilerplate for THEME using explicit Suwi palette composition.
+DESCRIPTION, BACKGROUND-MODE, and CORE-PALETTE are passed to
+`modus-themes-theme'.  BASE-PALETTE and BASE-CUSTOM-FACES are appended
+to the theme-local partial palette and custom-face symbols."
+  (declare (indent defun))
+  (let* ((theme-name (symbol-name theme))
+         (palette-symbol (intern (format "%s-palette" theme-name)))
+         (palette-partial-symbol (intern (format "%s-palette-partial" theme-name)))
+         (palette-overrides-symbol (intern (format "%s-palette-overrides" theme-name)))
+         (custom-faces-symbol (intern (format "%s-custom-faces" theme-name)))
+         (custom-faces-partial-symbol (intern (format "%s-custom-faces-partial" theme-name))))
+    `(progn
+       (defcustom ,palette-overrides-symbol nil
+         ,(format "User palette overrides evaluated after `%s'." palette-symbol)
+         :group 'suwi-themes
+         :type '(repeat (list symbol (choice symbol string))))
+       (defconst ,palette-symbol
+         (append ,palette-partial-symbol ,base-palette)
+         ,(format "Complete palette for `%s'." theme))
+       (defconst ,custom-faces-symbol
+         (append ,base-custom-faces ,custom-faces-partial-symbol)
+         ,(format "Complete custom-face list for `%s'." theme))
+       (modus-themes-theme
+        ',theme
+        'suwi-themes
+        ,description
+        ',background-mode
+        ',core-palette
+        ',palette-symbol
+        ',palette-overrides-symbol
+        ',custom-faces-symbol))))
+
 (defconst suwi-common-palette
   '(
     ;; These are used for org and md heandings, info titles, etc.
@@ -332,7 +366,7 @@ The `suwi-themes' are built on top of the `modus-themes'."
 (defconst suwi-themes-light '(suwi-walo suwi-jazz suwi-harbor)
   "Light Suwi theme symbols.")
 
-(defconst suwi-themes-dark '(suwi-pimeja)
+(defconst suwi-themes-dark '(suwi-pimeja suwi-unu)
   "Dark Suwi theme symbols.")
 
 (defconst suwi-themes-items
@@ -343,7 +377,8 @@ The `suwi-themes' are built on top of the `modus-themes'."
   '((suwi-walo suwi-themes "Sweet vivid Suwi light theme." light modus-operandi-palette suwi-walo-palette suwi-walo-palette-overrides)
     (suwi-jazz suwi-themes "Retro pastel Suwi light theme." light modus-operandi-palette suwi-jazz-palette suwi-jazz-palette-overrides)
     (suwi-harbor suwi-themes "Teal and pink Suwi light theme." light modus-operandi-palette suwi-harbor-palette suwi-harbor-palette-overrides)
-    (suwi-pimeja suwi-themes "Moody neon Suwi dark theme." dark modus-vivendi-palette suwi-pimeja-palette suwi-pimeja-palette-overrides))
+    (suwi-pimeja suwi-themes "Moody neon Suwi dark theme." dark modus-vivendi-palette suwi-pimeja-palette suwi-pimeja-palette-overrides)
+    (suwi-unu suwi-themes "Moody violet Suwi dark theme." dark modus-vivendi-palette suwi-unu-palette suwi-unu-palette-overrides))
   "Metadata tuples describing each Suwi theme.")
 
 (defvar suwi-themes--declared-p nil)

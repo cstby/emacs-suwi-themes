@@ -68,28 +68,12 @@
 (defconst suwi-harbor-custom-faces-partial nil
   "No extra custom faces; rely on the shared light base.")
 
-(defcustom suwi-harbor-palette-overrides nil
-  "User palette overrides evaluated after `suwi-harbor-palette'."
-  :group 'suwi-themes
-  :type '(repeat (list symbol (choice symbol string))))
-
-(defconst suwi-harbor-palette
-  (append suwi-harbor-palette-partial suwi-base-light-palette-full)
-  "Complete palette for `suwi-harbor'.")
-
-(defconst suwi-harbor-custom-faces
-  (append suwi-base-light-all-custom-faces suwi-harbor-custom-faces-partial)
-  "Complete custom-face list for `suwi-harbor'.")
-
-(modus-themes-theme
- 'suwi-harbor
- 'suwi-themes
- "Retro pastel palette for the Suwi framework."
- 'light
- 'modus-operandi-palette
- 'suwi-harbor-palette
- 'suwi-harbor-palette-overrides
- 'suwi-harbor-custom-faces)
+(suwi-define-theme suwi-harbor
+  "Retro pastel palette for the Suwi framework."
+  light
+  modus-operandi-palette
+  suwi-base-light-palette-full
+  suwi-base-light-all-custom-faces)
 
 ;;;###autoload
 (when load-file-name
