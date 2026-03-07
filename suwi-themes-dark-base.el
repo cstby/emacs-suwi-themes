@@ -27,12 +27,12 @@
     ;; (fg-dim           "#9aa3b2")
     ;; (fg-main          "#d6d7db")
 
-    (bg-main          "#050505")
+    (bg-main          "#181818")
     (bg-dim           "#2b2b2b")
     (bg-inactive      "#353535")
     (bg-active        "#464646")
     (border           "#606060")
-    (fg-dim           "#778899")
+    (fg-dim           "#8899aa")
     (fg-main          "#fafafa")
 
     (red              "#ff3333")        ;   0°
