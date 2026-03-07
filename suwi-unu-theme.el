@@ -18,10 +18,12 @@
 
 (defconst suwi-unu-palette-partial
   '(
-    (unu-fg "#efedf7")
+    ;; (unu-fg "#e0dcef")
+    (unu-fg "#d1cbe7")
     (unu-0 "#aeabed")
     (unu-2 "#8a80ff")
-    (unu-3 "#7866ff")
+    ;; (unu-3 "#7866ff")
+    (unu-3 "#614dff")
 
     (accent-0 unu-0)
     (accent-1 unu-0)
