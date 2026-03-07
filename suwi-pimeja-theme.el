@@ -14,6 +14,7 @@
 
 ;;; Code:
 
+(require 'suwi-themes)
 (require 'suwi-themes-dark-base)
 
 (defconst suwi-pimeja-palette-partial
@@ -24,12 +25,8 @@
   '()
   "Custom faces unique to `suwi-pimeja'.")
 
-(suwi-define-theme suwi-pimeja
-  "Moody dark palette for the Suwi framework."
-  dark
-  modus-vivendi-palette
-  suwi-base-dark-palette-full
-  suwi-base-dark-all-custom-faces)
+(suwi-define-dark-theme suwi-pimeja
+  "Moody dark palette for the Suwi framework.")
 
 ;;;###autoload
 (when load-file-name

@@ -14,7 +14,7 @@
 
 ;;; Code:
 
-(require 'suwi-themes)
+(require 'suwi-themes-common)
 
 (defconst suwi-base-dark-palette
   '(

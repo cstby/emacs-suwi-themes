@@ -14,6 +14,7 @@
 
 ;;; Code:
 
+(require 'suwi-themes)
 (require 'suwi-themes-light-base)
 
 (defconst suwi-jazz-palette-partial
@@ -79,12 +80,8 @@
 (defconst suwi-jazz-custom-faces-partial nil
   "No extra custom faces; rely on the shared light base.")
 
-(suwi-define-theme suwi-jazz
-  "Retro pastel palette for the Suwi framework."
-  light
-  modus-operandi-palette
-  suwi-base-light-palette-full
-  suwi-base-light-all-custom-faces)
+(suwi-define-light-theme suwi-jazz
+  "Retro pastel palette for the Suwi framework.")
 
 ;;;###autoload
 (when load-file-name

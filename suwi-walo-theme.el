@@ -13,6 +13,7 @@
 
 ;;; Code:
 
+(require 'suwi-themes)
 (require 'suwi-themes-light-base)
 
 (defconst suwi-walo-palette-partial
@@ -23,12 +24,8 @@
   '()
   "Custom faces that give `suwi-walo' its distinctive vibe.")
 
-(suwi-define-theme suwi-walo
-  "Sweet, vivid test palette for the Suwi framework."
-  light
-  modus-operandi-palette
-  suwi-base-light-palette-full
-  suwi-base-light-all-custom-faces)
+(suwi-define-light-theme suwi-walo
+  "Sweet, vivid test palette for the Suwi framework.")
 
 ;;;###autoload
 (when load-file-name
