@@ -14,65 +14,42 @@
 (require 'suwi-themes)
 (require 'suwi-themes-light-base)
 (require 'suwi-themes-dark-base)
-(require 'suwi-walo-theme)
-(require 'suwi-jazz-theme)
-(require 'suwi-harbor-theme)
-(require 'suwi-pimeja-theme)
-(require 'suwi-unu-theme)
+(suwi-themes--ensure-theme-files-loaded)
 
-(defconst suwi-tests-active-themes '(suwi-walo suwi-jazz suwi-harbor suwi-pimeja suwi-unu)
-  "Active Suwi themes covered by palette tests.")
+(defun suwi-tests--themes ()
+  "Return all discovered Suwi themes."
+  suwi-themes-items)
+
+(defun suwi-tests--theme-symbol (theme suffix)
+  "Return THEME's symbol ending in SUFFIX."
+  (intern (format "%s-%s" theme suffix)))
+
+(defun suwi-tests--theme-value (theme suffix)
+  "Return THEME's value for symbol ending in SUFFIX."
+  (symbol-value (suwi-tests--theme-symbol theme suffix)))
 
 (defun suwi-tests--new-user-palette (theme)
   "Return current user palette entries for THEME."
-  (symbol-value
-   (pcase theme
-     ('suwi-walo 'suwi-walo-palette)
-     ('suwi-jazz 'suwi-jazz-palette)
-     ('suwi-harbor 'suwi-harbor-palette)
-     ('suwi-pimeja 'suwi-pimeja-palette)
-     ('suwi-unu 'suwi-unu-palette)
-     (_ (error "Unknown active theme %S" theme)))))
+  (suwi-tests--theme-value theme "palette"))
 
 (defun suwi-tests--theme-partial-palette (theme)
   "Return explicit theme-local palette entries for THEME."
-  (symbol-value
-   (pcase theme
-     ('suwi-walo 'suwi-walo-palette-partial)
-     ('suwi-jazz 'suwi-jazz-palette-partial)
-     ('suwi-harbor 'suwi-harbor-palette-partial)
-     ('suwi-pimeja 'suwi-pimeja-palette-partial)
-     ('suwi-unu 'suwi-unu-palette-partial)
-     (_ (error "Unknown active theme %S" theme)))))
+  (suwi-tests--theme-value theme "palette-partial"))
 
 (defun suwi-tests--theme-custom-faces (theme)
   "Return final custom-face entries for THEME."
-  (symbol-value
-   (pcase theme
-     ('suwi-walo 'suwi-walo-custom-faces)
-     ('suwi-jazz 'suwi-jazz-custom-faces)
-     ('suwi-harbor 'suwi-harbor-custom-faces)
-     ('suwi-pimeja 'suwi-pimeja-custom-faces)
-     ('suwi-unu 'suwi-unu-custom-faces)
-     (_ (error "Unknown active theme %S" theme)))))
+  (suwi-tests--theme-value theme "custom-faces"))
 
 (defun suwi-tests--theme-custom-faces-partial (theme)
   "Return theme-local custom-face entries for THEME."
-  (symbol-value
-   (pcase theme
-     ('suwi-walo 'suwi-walo-custom-faces-partial)
-     ('suwi-jazz 'suwi-jazz-custom-faces-partial)
-     ('suwi-harbor 'suwi-harbor-custom-faces-partial)
-     ('suwi-pimeja 'suwi-pimeja-custom-faces-partial)
-     ('suwi-unu 'suwi-unu-custom-faces-partial)
-     (_ (error "Unknown active theme %S" theme)))))
+  (suwi-tests--theme-value theme "custom-faces-partial"))
 
 (defun suwi-tests--theme-base-custom-faces (theme)
   "Return the base custom-face entries used by THEME."
-  (pcase theme
-    ((or 'suwi-walo 'suwi-jazz 'suwi-harbor) suwi-base-light-all-custom-faces)
-    ((or 'suwi-pimeja 'suwi-unu) suwi-base-dark-all-custom-faces)
-    (_ (error "Unknown active theme %S" theme))))
+  (cond
+   ((memq theme suwi-themes-light) suwi-base-light-all-custom-faces)
+   ((memq theme suwi-themes-dark) suwi-base-dark-all-custom-faces)
+   (t (error "Unknown active theme %S" theme))))
 
 (defun suwi-tests--resolved-value (color palette)
   "Return resolved value of COLOR in PALETTE."
@@ -89,7 +66,7 @@
 
 (ert-deftest suwi-tests-active-themes-include-explicit-keys ()
   "Theme palettes retain each theme's explicit palette keys."
-  (dolist (theme suwi-tests-active-themes)
+  (dolist (theme (suwi-tests--themes))
     (let ((partial (suwi-tests--theme-partial-palette theme))
           (palette (suwi-tests--new-user-palette theme)))
       (dolist (entry partial)
@@ -97,7 +74,7 @@
 
 (ert-deftest suwi-tests-active-themes-compose-custom-faces-from-base ()
   "Theme custom faces append theme-local faces onto the appropriate base."
-  (dolist (theme suwi-tests-active-themes)
+  (dolist (theme (suwi-tests--themes))
     (should
      (equal (suwi-tests--theme-custom-faces theme)
             (append (suwi-tests--theme-base-custom-faces theme)
@@ -105,18 +82,25 @@
 
 (ert-deftest suwi-tests-active-themes-define-palette-overrides-vars ()
   "Theme definitions expose per-theme palette override variables."
-  (dolist (theme suwi-tests-active-themes)
-    (should (boundp (intern (format "%s-palette-overrides" theme))))))
+  (dolist (theme (suwi-tests--themes))
+    (should (boundp (suwi-tests--theme-symbol theme "palette-overrides")))))
+
+(ert-deftest suwi-tests-active-themes-define-framework-symbols ()
+  "Each discovered theme exposes the expected framework symbols."
+  (dolist (theme (suwi-tests--themes))
+    (dolist (suffix '("palette" "palette-partial" "custom-faces" "custom-faces-partial"))
+      (should (boundp (suwi-tests--theme-symbol theme suffix))))))
 
 (ert-deftest suwi-tests-theme-registry-derives-from-loaded-theme-definitions ()
   "Theme registry lists are populated from the loaded theme definitions."
   (suwi-themes--ensure-theme-files-loaded)
-  (should (equal suwi-themes-light '(suwi-walo suwi-jazz suwi-harbor)))
-  (should (equal suwi-themes-dark '(suwi-pimeja suwi-unu)))
+  (should suwi-themes-light)
+  (should suwi-themes-dark)
   (should (equal suwi-themes-items
-                 '(suwi-walo suwi-jazz suwi-harbor suwi-pimeja suwi-unu)))
-  (should (equal (mapcar #'car suwi-themes-with-properties)
-                 suwi-themes-items)))
+                 (append suwi-themes-light suwi-themes-dark)))
+  (should-not (seq-intersection suwi-themes-light suwi-themes-dark #'eq))
+  (should (equal (sort (copy-sequence (mapcar #'car suwi-themes-with-properties)) #'string-lessp)
+                 (sort (copy-sequence suwi-themes-items) #'string-lessp))))
 
 (ert-deftest suwi-tests-base-palettes-cover-modus-keywords ()
   "Composed Suwi base palettes provide every Modus palette keyword."
@@ -134,14 +118,17 @@
   (let ((suwi-themes-take-over-modus-themes-mode t))
     (suwi-themes--ensure-theme-files-loaded)
     (should (equal (modus-themes-get-themes)
-                   '(suwi-walo suwi-jazz suwi-harbor suwi-pimeja suwi-unu)))))
+                   (suwi-themes--sorted-items)))))
 
 (ert-deftest suwi-tests-theme-alias-overrides-resolve-correctly ()
-  "Shipped theme aliases override base palette values."
-  (should (equal (suwi-tests--resolved-value 'fg-main suwi-harbor-palette)
-                 (suwi-tests--resolved-value 'harbor-fg suwi-harbor-palette)))
-  (should (equal (suwi-tests--resolved-value 'bg-active suwi-jazz-palette)
-                 (suwi-tests--resolved-value 'jazz-azure suwi-jazz-palette))))
+  "Explicit theme-local aliases override base palette values."
+  (dolist (theme (suwi-tests--themes))
+    (let ((partial (suwi-tests--theme-partial-palette theme))
+          (palette (suwi-tests--new-user-palette theme)))
+      (dolist (entry partial)
+        (when (symbolp (cadr entry))
+          (should (equal (suwi-tests--resolved-value (car entry) palette)
+                         (suwi-tests--resolved-value (cadr entry) palette))))))))
 
 (provide 'suwi-tests)
 ;;; suwi-tests.el ends here
