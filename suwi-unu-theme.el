@@ -44,11 +44,6 @@
 (suwi-define-dark-theme suwi-unu
   "Moody dark palette for the Suwi framework.")
 
-;;;###autoload
-(when load-file-name
-  (add-to-list 'custom-theme-load-path
-               (file-name-directory load-file-name)))
-
 (provide 'suwi-unu-theme)
 
 ;;; suwi-unu-theme.el ends here

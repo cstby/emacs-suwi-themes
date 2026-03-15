@@ -28,11 +28,6 @@
 (suwi-define-dark-theme suwi-pimeja
   "Moody dark palette for the Suwi framework.")
 
-;;;###autoload
-(when load-file-name
-  (add-to-list 'custom-theme-load-path
-               (file-name-directory load-file-name)))
-
 (provide 'suwi-pimeja-theme)
 
 ;;; suwi-pimeja-theme.el ends here

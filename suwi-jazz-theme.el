@@ -83,11 +83,6 @@
 (suwi-define-light-theme suwi-jazz
   "Retro pastel palette for the Suwi framework.")
 
-;;;###autoload
-(when load-file-name
-  (add-to-list 'custom-theme-load-path
-               (file-name-directory load-file-name)))
-
 (provide 'suwi-jazz-theme)
 
 ;;; suwi-jazz-theme.el ends here

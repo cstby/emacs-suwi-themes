@@ -27,11 +27,6 @@
 (suwi-define-light-theme suwi-walo
   "Sweet, vivid test palette for the Suwi framework.")
 
-;;;###autoload
-(when load-file-name
-  (add-to-list 'custom-theme-load-path
-               (file-name-directory load-file-name)))
-
 (provide 'suwi-walo-theme)
 
 ;;; suwi-walo-theme.el ends here

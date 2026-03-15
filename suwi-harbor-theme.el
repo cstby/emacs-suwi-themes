@@ -72,11 +72,6 @@
 (suwi-define-light-theme suwi-harbor
   "Retro pastel palette for the Suwi framework.")
 
-;;;###autoload
-(when load-file-name
-  (add-to-list 'custom-theme-load-path
-               (file-name-directory load-file-name)))
-
 (provide 'suwi-harbor-theme)
 
 ;;; suwi-harbor-theme.el ends here

@@ -17,6 +17,11 @@
 (require 'modus-themes)
 (require 'suwi-themes-common)
 
+;;;###autoload
+(when load-file-name
+  (add-to-list 'custom-theme-load-path
+               (file-name-directory load-file-name)))
+
 (defgroup suwi-themes nil
   "Sweet and simple themes.
 The `suwi-themes' are built on top of the `modus-themes'."
