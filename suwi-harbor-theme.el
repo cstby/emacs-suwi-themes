@@ -4,7 +4,6 @@
 
 ;; Author: Carl
 ;; Maintainer: Carl
-;; Package-Requires: ((emacs "28.1") (modus-themes "5.0.0"))
 
 ;;; Commentary:
 ;;

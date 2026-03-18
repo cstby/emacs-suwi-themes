@@ -4,6 +4,8 @@
 
 ;; Author: Carl
 ;; Maintainer: Carl
+;; Version: 0.1.0
+;; Keywords: faces, theme
 ;; Package-Requires: ((emacs "28.1") (modus-themes "5.0.0"))
 
 ;;; Commentary:
