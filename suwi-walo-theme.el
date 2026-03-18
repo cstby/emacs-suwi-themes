@@ -1,4 +1,4 @@
-;;; suwi-walo-theme.el --- Sweet vivid test theme -*- lexical-binding:t -*-
+;;; suwi-walo-theme.el --- Suwi light theme -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2025  Carl
 
@@ -8,8 +8,8 @@
 
 ;;; Commentary:
 ;;
-;; MVP theme that demonstrates how Suwi themes build on the shared
-;; light base palette while adding their own accent choices.
+;; Minimal light representative of the Suwi theme family.  Builds on
+;; the shared light base palette without adding extra accents yet.
 
 ;;; Code:
 
@@ -25,7 +25,7 @@
   "Custom faces that give `suwi-walo' its distinctive vibe.")
 
 (suwi-define-light-theme suwi-walo
-  "Sweet, vivid test palette for the Suwi framework.")
+  "Sweet, vivid light palette for the Suwi framework.")
 
 (provide 'suwi-walo-theme)
 

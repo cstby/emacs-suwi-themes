@@ -1,4 +1,4 @@
-;;; suwi-unu-theme.el --- Moody dark test theme -*- lexical-binding:t -*-
+;;; suwi-unu-theme.el --- Purple Suwi dark theme -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2025  Carl
 
@@ -8,7 +8,7 @@
 
 ;;; Commentary:
 ;;
-;; First dark representative of the Suwi theme family.  Builds on the
+;; Dark Suwi variant with violet-forward accents.  Builds on the
 ;; shared dark base palette while nudging a few key accents toward a
 ;; neon “unu” mood.
 

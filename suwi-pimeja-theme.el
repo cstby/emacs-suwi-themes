@@ -1,4 +1,4 @@
-;;; suwi-pimeja-theme.el --- Moody dark test theme -*- lexical-binding:t -*-
+;;; suwi-pimeja-theme.el --- Dark Suwi theme -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2025  Carl
 
@@ -8,9 +8,8 @@
 
 ;;; Commentary:
 ;;
-;; First dark representative of the Suwi theme family.  Builds on the
-;; shared dark base palette while nudging a few key accents toward a
-;; neon “pimeja” mood.
+;; Minimal dark representative of the Suwi theme family.  Builds on
+;; the shared dark base palette without adding extra accents yet.
 
 ;;; Code:
 
