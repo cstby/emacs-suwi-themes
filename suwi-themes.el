@@ -179,16 +179,33 @@ manage `suwi-themes-italic-constructs' yourself."
 (defvar suwi-themes--theme-files-loaded-p nil
   "Non-nil when all concrete Suwi theme files have been loaded.")
 
+(defconst suwi-themes-directory
+  (file-name-directory
+   (or load-file-name
+       (locate-library "suwi-themes.el")
+       (buffer-file-name)))
+  "Directory that contains the Suwi theme sources.")
+
+(defun suwi-themes--directory ()
+  "Return the directory that contains the Suwi theme sources."
+  suwi-themes-directory)
+
+(defun suwi-themes--theme-file-features ()
+  "Return concrete Suwi theme features derived from theme filenames."
+  (mapcar
+   (lambda (file)
+     (intern (file-name-base file)))
+   (sort
+    (directory-files (suwi-themes--directory) nil "\\`suwi-.*-theme\\.el\\'")
+    #'string-lessp)))
+
 (defun suwi-themes--ensure-theme-files-loaded ()
   "Load all concrete Suwi theme files exactly once."
   (unless suwi-themes--theme-files-loaded-p
     (require 'suwi-themes-light-base)
     (require 'suwi-themes-dark-base)
-    (require 'suwi-walo-theme)
-    (require 'suwi-jazz-theme)
-    (require 'suwi-harbor-theme)
-    (require 'suwi-pimeja-theme)
-    (require 'suwi-unu-theme)
+    (dolist (feature (suwi-themes--theme-file-features))
+      (require feature))
     (setq suwi-themes--theme-files-loaded-p t)))
 
 (defun suwi-themes--sorted-items ()
