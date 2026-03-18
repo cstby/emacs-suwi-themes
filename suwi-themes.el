@@ -207,22 +207,37 @@ manage `suwi-themes-italic-constructs' yourself."
   "Return only Suwi themes when SUWI-THEMES-TAKE-OVER-MODUS-THEMES-MODE is enabled."
   (suwi-themes--sorted-items))
 
+(defmacro suwi-themes-define-derivative-command (suffix)
+  "Define Suwi command with SUFFIX after preloading all theme files."
+  (let ((modus-command (intern (format "modus-themes-%s" suffix)))
+        (suwi-command (intern (format "suwi-themes-%s" suffix))))
+    `(defun ,suwi-command ()
+       ,(format
+         "Like `%s' but only for the `suwi-themes'.\nPreload all theme files first."
+         modus-command)
+       (interactive)
+       (suwi-themes--ensure-theme-files-loaded)
+       (cl-letf (((symbol-function 'modus-themes-get-themes)
+                  (lambda ()
+                    (modus-themes-get-all-known-themes 'suwi-themes))))
+         (call-interactively ',modus-command)))))
+
 ;;;###autoload (autoload 'suwi-themes-toggle "suwi-themes")
-(modus-themes-define-derivative-command suwi-themes toggle)
+(suwi-themes-define-derivative-command toggle)
 ;;;###autoload (autoload 'suwi-themes-rotate "suwi-themes")
-(modus-themes-define-derivative-command suwi-themes rotate)
+(suwi-themes-define-derivative-command rotate)
 ;;;###autoload (autoload 'suwi-themes-select "suwi-themes")
-(modus-themes-define-derivative-command suwi-themes select)
+(suwi-themes-define-derivative-command select)
 ;;;###autoload (autoload 'suwi-themes-load-random "suwi-themes")
-(modus-themes-define-derivative-command suwi-themes load-random)
+(suwi-themes-define-derivative-command load-random)
 ;;;###autoload (autoload 'suwi-themes-load-random-dark "suwi-themes")
-(modus-themes-define-derivative-command suwi-themes load-random-dark)
+(suwi-themes-define-derivative-command load-random-dark)
 ;;;###autoload (autoload 'suwi-themes-load-random-light "suwi-themes")
-(modus-themes-define-derivative-command suwi-themes load-random-light)
+(suwi-themes-define-derivative-command load-random-light)
 ;;;###autoload (autoload 'suwi-themes-list-colors "suwi-themes")
-(modus-themes-define-derivative-command suwi-themes list-colors)
+(suwi-themes-define-derivative-command list-colors)
 ;;;###autoload (autoload 'suwi-themes-list-colors-current "suwi-themes")
-(modus-themes-define-derivative-command suwi-themes list-colors-current)
+(suwi-themes-define-derivative-command list-colors-current)
 
 (provide 'suwi-themes)
 
