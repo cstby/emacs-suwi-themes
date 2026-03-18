@@ -17,19 +17,15 @@
 (require 'suwi-themes-light-base)
 
 (defconst suwi-harbor-palette-partial
-  '(
+  '((harbor-fg "#0B3446")
+    (harbor-teal "#008299")
+    (harbor-rose "#D94574")
+    (harbor-pink "#FF7F96")
 
-    (harbor-fg "#0B3446")
-    (harbor-0  "#008299")
-    (harbor-2  "#D94574")
-    (harbor-3  "#FF7F96")
-
-    (accent-0 harbor-0)
-    (accent-1 harbor-0)
-    (accent-2 harbor-2)
-    (accent-3 harbor-3)
-
-    (fg-main harbor-fg))
+    (suwi-base harbor-fg)
+    (suwi-primary harbor-teal)
+    (suwi-secondary harbor-rose)
+    (suwi-tertiary harbor-pink))
   "Palette entries that give `suwi-harbor' its distinctive vibe.")
 
 (defconst suwi-harbor-custom-faces-partial nil

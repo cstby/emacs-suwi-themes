@@ -16,16 +16,15 @@
 (require 'suwi-themes-dark-base)
 
 (defconst suwi-kalama-palette-partial
-  '(
-    (kalama-0 "#9FAFFF")
-    (kalama-1 "#D8BBFF")
-    (kalama-2 "#FECCFF")
-    (kalama-3 "#A1ECFF")
+  '((kalama-periwinkle "#9FAFFF")
+    (kalama-lavender "#D8BBFF")
+    (kalama-blush "#FECCFF")
+    (kalama-ice "#A1ECFF")
 
-    (accent-0 kalama-0)
-    (accent-1 kalama-1)
-    (accent-2 kalama-2)
-    (accent-3 kalama-3))
+    (suwi-primary kalama-periwinkle)
+    (suwi-secondary kalama-blush)
+    (suwi-tertiary kalama-ice)
+    (suwi-keyword kalama-lavender))
   "Palette entries that give `suwi-kalama' its distinctive vibe.")
 
 (defconst suwi-kalama-custom-faces-partial

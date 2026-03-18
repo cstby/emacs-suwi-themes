@@ -58,15 +58,14 @@
     ;; Accent 2: git hashes, magit filename
     ;; Accent 3: pretty much never used. magit tags,
 
-    (accent-0 jazz-teal)
-    (accent-1 jazz-blue)
-    (accent-2 jazz-pink)
-    (accent-3 jazz-gold)
+    (suwi-base jazz-purple)
+    (suwi-primary jazz-teal)
+    (suwi-secondary jazz-pink)
+    (suwi-tertiary jazz-gold)
 
     (bg-main jazz-white)
-    (fg-main jazz-purple)
     (bg-active jazz-azure)
-    (keyword jazz-teal)
+    (suwi-keyword jazz-teal)
     (string jazz-blue+1)
     (comment jazz-slate)
     (type jazz-blue)

@@ -17,23 +17,15 @@
 (require 'suwi-themes-dark-base)
 
 (defconst suwi-unu-palette-partial
-  '(
-    ;; (unu-fg "#e0dcef")
-    (unu-fg "#d1cbe7")
-    (unu-0 "#aeabed")
-    (unu-2 "#8a80ff")
-    ;; (unu-3 "#7866ff")
-    (unu-3 "#614dff")
+  '((unu-fg "#d1cbe7")
+    (unu-wisteria "#aeabed")
+    (unu-periwinkle "#8a80ff")
+    (unu-indigo "#614dff")
 
-    (accent-0 unu-0)
-    (accent-1 unu-0)
-    (accent-2 unu-2)
-    (accent-3 unu-3)
-
-    (fg-main unu-fg)
-
-
-    )
+    (suwi-base unu-fg)
+    (suwi-primary unu-wisteria)
+    (suwi-secondary unu-periwinkle)
+    (suwi-tertiary unu-indigo))
   "Palette entries that give `suwi-unu' its distinctive vibe.")
 
 (defconst suwi-unu-custom-faces-partial
