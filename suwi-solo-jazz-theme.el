@@ -1,4 +1,4 @@
-;;; suwi-jazz-theme.el --- Suwi theme: jazz -*- lexical-binding:t -*-
+;;; suwi-solo-jazz-theme.el --- Suwi theme: solo-jazz -*- lexical-binding:t -*-
 
 ;; Copyright (C) 2025  Carl Steib
 
@@ -12,7 +12,7 @@
 (require 'suwi-themes)
 (require 'suwi-themes-light-base)
 
-(defconst suwi-jazz-palette-partial
+(defconst suwi-solo-jazz-palette-partial
   '(
     ;; Solo Jazz raw colors
     (jazz-white "#fafafa")
@@ -62,14 +62,14 @@
     (variable jazz-violet)
     (constant jazz-blue)
     (builtin jazz-blue))
-  "Palette entries that give `suwi-jazz' its distinctive vibe.")
+  "Palette entries that give `suwi-solo-jazz' its distinctive vibe.")
 
-(defconst suwi-jazz-custom-faces-partial nil
+(defconst suwi-solo-jazz-custom-faces-partial nil
   "No extra custom faces; rely on the shared light base.")
 
-(suwi-define-light-theme suwi-jazz
+(suwi-define-light-theme suwi-solo-jazz
   "Retro pastel palette for the Suwi framework.")
 
-(provide 'suwi-jazz-theme)
+(provide 'suwi-solo-jazz-theme)
 
-;;; suwi-jazz-theme.el ends here
+;;; suwi-solo-jazz-theme.el ends here
