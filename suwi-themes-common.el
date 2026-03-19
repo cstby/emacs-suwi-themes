@@ -136,7 +136,7 @@
     ;; General semantic mappings.
     (cursor suwi-tertiary)
     (keybind suwi-primary)
-    (name suwi-secondary)
+    (name suwi-primary)
     (identifier suwi-tertiary)
     ;; Error, warning, and informational mappings.
     (err red)

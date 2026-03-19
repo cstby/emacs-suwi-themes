@@ -151,5 +151,10 @@
         (should (equal (suwi-tests--resolved-value 'fg-main palette)
                        (suwi-tests--resolved-value 'fg-main base-palette)))))))
 
+(ert-deftest suwi-tests-name-maps-to-suwi-primary ()
+  "The shared `name' semantic mapping should use `suwi-primary'."
+  (should (equal (suwi-tests--resolved-value 'name suwi-common-palette)
+                 (suwi-tests--resolved-value 'suwi-primary suwi-common-palette))))
+
 (provide 'suwi-tests)
 ;;; suwi-tests.el ends here
