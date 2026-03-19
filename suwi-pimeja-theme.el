@@ -1,14 +1,11 @@
-;;; suwi-pimeja-theme.el --- Dark Suwi theme -*- lexical-binding:t -*-
+;;; suwi-pimeja-theme.el --- Suwi theme: pimeja -*- lexical-binding:t -*-
 
-;; Copyright (C) 2025  Carl
-
-;; Author: Carl
-;; Maintainer: Carl
+;; Copyright (C) 2025  Carl Steib
 
 ;;; Commentary:
 ;;
-;; Minimal dark representative of the Suwi theme family.  Builds on
-;; the shared dark base palette without adding extra accents yet.
+;; This file is part of the `suwi-themes' package, a collection of
+;; themes for GNU Emacs built on top of `modus-themes'.
 
 ;;; Code:
 

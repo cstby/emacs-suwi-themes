@@ -1,15 +1,11 @@
-;;; suwi-jazz-theme.el --- Retro pastel Suwi light theme -*- lexical-binding:t -*-
+;;; suwi-jazz-theme.el --- Suwi theme: jazz -*- lexical-binding:t -*-
 
-;; Copyright (C) 2025  Carl
-
-;; Author: Carl
-;; Maintainer: Carl
+;; Copyright (C) 2025  Carl Steib
 
 ;;; Commentary:
 ;;
-;; Light Suwi variant inspired by the Solo Jazz palette.  Uses the
-;; shared light base and tweaks a handful of accents to echo the
-;; teal–purple cup motif without adding extra custom faces.
+;; This file is part of the `suwi-themes' package, a collection of
+;; themes for GNU Emacs built on top of `modus-themes'.
 
 ;;; Code:
 

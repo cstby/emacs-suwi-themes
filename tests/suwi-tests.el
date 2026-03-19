@@ -1,6 +1,6 @@
 ;;; suwi-tests.el --- Palette composition tests for Suwi themes -*- lexical-binding:t -*-
 
-;; Copyright (C) 2026
+;; Copyright (C) 2026  Carl Steib
 
 ;;; Commentary:
 ;;

@@ -1,14 +1,11 @@
-;;; suwi-walo-theme.el --- Suwi light theme -*- lexical-binding:t -*-
+;;; suwi-walo-theme.el --- Suwi theme: walo -*- lexical-binding:t -*-
 
-;; Copyright (C) 2025  Carl
-
-;; Author: Carl
-;; Maintainer: Carl
+;; Copyright (C) 2025  Carl Steib
 
 ;;; Commentary:
 ;;
-;; Minimal light representative of the Suwi theme family.  Builds on
-;; the shared light base palette without adding extra accents yet.
+;; This file is part of the `suwi-themes' package, a collection of
+;; themes for GNU Emacs built on top of `modus-themes'.
 
 ;;; Code:
 

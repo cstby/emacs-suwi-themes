@@ -1,15 +1,11 @@
-;;; suwi-unu-theme.el --- Purple Suwi dark theme -*- lexical-binding:t -*-
+;;; suwi-unu-theme.el --- Suwi theme: unu -*- lexical-binding:t -*-
 
-;; Copyright (C) 2025  Carl
-
-;; Author: Carl
-;; Maintainer: Carl
+;; Copyright (C) 2025  Carl Steib
 
 ;;; Commentary:
 ;;
-;; Dark Suwi variant with violet-forward accents.  Builds on the
-;; shared dark base palette while nudging a few key accents toward a
-;; neon “unu” mood.
+;; This file is part of the `suwi-themes' package, a collection of
+;; themes for GNU Emacs built on top of `modus-themes'.
 
 ;;; Code:
 

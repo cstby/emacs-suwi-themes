@@ -1,9 +1,6 @@
 ;;; suwi-themes-common.el --- Shared palette and faces for Suwi themes -*- lexical-binding:t -*-
 
-;; Copyright (C) 2025  Carl
-
-;; Author: Carl
-;; Maintainer: Carl
+;; Copyright (C) 2025  Carl Steib
 
 ;;; Commentary:
 ;;

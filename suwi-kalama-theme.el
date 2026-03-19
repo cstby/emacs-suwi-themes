@@ -1,14 +1,11 @@
-;;; suwi-kalama-theme.el --- Frosted pastel Suwi dark theme -*- lexical-binding:t -*-
+;;; suwi-kalama-theme.el --- Suwi theme: kalama -*- lexical-binding:t -*-
 
-;; Copyright (C) 2025  Carl
-
-;; Author: Carl
-;; Maintainer: Carl
+;; Copyright (C) 2025  Carl Steib
 
 ;;; Commentary:
 ;;
-;; Dark Suwi variant with pale pink, lavender, and icy blue accents.
-;; Builds on the shared dark base and only overrides accent colors.
+;; This file is part of the `suwi-themes' package, a collection of
+;; themes for GNU Emacs built on top of `modus-themes'.
 
 ;;; Code:
 

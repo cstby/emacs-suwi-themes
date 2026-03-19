@@ -1,9 +1,6 @@
 ;;; suwi-themes-dark-base.el --- Dark base palette for Suwi themes -*- lexical-binding:t -*-
 
-;; Copyright (C) 2025  Carl
-
-;; Author: Carl
-;; Maintainer: Carl
+;; Copyright (C) 2025  Carl Steib
 
 ;;; Commentary:
 ;;

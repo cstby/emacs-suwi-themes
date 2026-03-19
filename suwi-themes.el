@@ -1,17 +1,18 @@
 ;;; suwi-themes.el --- Core scaffolding for Suwi themes -*- lexical-binding:t -*-
 
-;; Copyright (C) 2025  Carl
+;; Copyright (C) 2025  Carl Steib
 
-;; Author: Carl
-;; Maintainer: Carl
+;; Author: Carl Steib
+;; Maintainer: Carl Steib
 ;; Version: 0.1.0
 ;; Keywords: faces, theme
 ;; Package-Requires: ((emacs "28.1") (modus-themes "5.0.0"))
 
 ;;; Commentary:
 ;;
-;; Entrypoint for the Suwi theme collection.  Hosts shared customization
-;; groups, semantic mappings, and face overrides that all themes reuse.
+;; The `suwi-themes' are a collection of themes for GNU Emacs whose goal
+;; is to provide a simple and sweet framework for users to easily
+;; define their own `modus-themes'.
 
 ;;; Code:
 
