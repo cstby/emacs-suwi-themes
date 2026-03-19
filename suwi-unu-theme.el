@@ -10,26 +10,21 @@
 ;;; Code:
 
 (require 'suwi-themes)
-(require 'suwi-themes-dark-base)
+(require 'suwi-themes-light-base)
 
 (defconst suwi-unu-palette-partial
-  '((unu-fg "#d1cbe7")
-    (unu-wisteria "#aeabed")
-    (unu-periwinkle "#8a80ff")
-    (unu-indigo "#614dff")
-
-    (suwi-base unu-fg)
-    (suwi-primary unu-wisteria)
-    (suwi-secondary unu-periwinkle)
-    (suwi-tertiary unu-indigo))
+  '((suwi-base "#3A2F6E")
+    (suwi-primary "#2E2ABF")
+    (suwi-secondary "#6A5CFF")
+    (suwi-tertiary "#9A8CFF"))
   "Palette entries that give `suwi-unu' its distinctive vibe.")
 
 (defconst suwi-unu-custom-faces-partial
   '()
   "Custom faces unique to `suwi-unu'.")
 
-(suwi-define-dark-theme suwi-unu
-  "Moody dark palette for the Suwi framework.")
+(suwi-define-light-theme suwi-unu
+  "Soft violet light palette for the Suwi framework.")
 
 (provide 'suwi-unu-theme)
 
