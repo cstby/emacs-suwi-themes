@@ -13,7 +13,7 @@
 
 (defconst suwi-common-palette
   '(
-    ;; These are used for org and md heandings, info titles, etc.
+    ;; Shared three-color rotation for headings and title-like text.
     (fg-heading-0 suwi-primary)
     (fg-heading-1 suwi-secondary)
     (fg-heading-2 suwi-tertiary)
@@ -23,12 +23,12 @@
     (fg-heading-6 suwi-primary)
     (fg-heading-7 suwi-secondary)
     (fg-heading-8 suwi-tertiary)
-    ;; These are used for completion matches
+    ;; Shared three-color rotation for completion matches.
     (fg-completion-match-0 suwi-primary)
     (fg-completion-match-1 suwi-secondary)
     (fg-completion-match-2 suwi-tertiary)
     (fg-completion-match-3 suwi-primary)
-    ;; These are used for rainbow delimiters only.
+    ;; Rainbow delimiters cycle through the three semantic accents.
     (rainbow-0 fg-main)
     (rainbow-1 suwi-primary)
     (rainbow-2 suwi-secondary)
@@ -100,13 +100,14 @@
     (indigo blue-faint)
     (maroon magenta-faint)
     (pink magenta)
-    ;; Greyscale remappings
+    ;; Core neutral and greyscale remappings.
     (fringe bg-main)
     (bg-hl-line bg-dim)
     (bg-completion bg-hl-line)
     (bg-region bg-inactive)
     (fg-region fg-main)
     (fg-alt fg-main)
+    (fg-main suwi-fg)
     (bg-tab-bar bg-dim)
     (bg-tab-current bg-main)
     (bg-tab-other bg-tab-bar)
@@ -116,7 +117,7 @@
     (bg-mode-line-inactive bg-main)
     (fg-mode-line-inactive fg-dim)
     (border-mode-line-inactive border)
-    ;; Code mappings
+    ;; Semantic code mappings.
     (comment fg-dim)
     (docstring comment)
     (string suwi-tertiary)
@@ -132,12 +133,12 @@
     (type suwi-primary)
     (variable suwi-secondary)
     (variable-use fg-main)
-    ;; General mappings
+    ;; General semantic mappings.
     (cursor suwi-tertiary)
     (keybind suwi-primary)
     (name suwi-secondary)
     (identifier suwi-tertiary)
-    ;; Error, Warning, Info
+    ;; Error, warning, and informational mappings.
     (err red)
     (warning yellow-warmer)
     (info cyan-warmer)
@@ -163,7 +164,7 @@
     (fg-active-argument yellow-warmer)
     (bg-active-value bg-cyan-nuanced)
     (fg-active-value cyan-warmer)
-    ;; Date mappings
+    ;; Date mappings.
     (date-common suwi-secondary)
     (date-deadline err)
     (date-deadline-subtle err)
@@ -175,13 +176,12 @@
     (date-scheduled-subtle suwi-secondary)
     (date-weekday suwi-secondary)
     (date-weekend suwi-tertiary)
-    ;; Suwi semantic colors
-    (suwi-base fg-main)
+    ;; Theme-facing semantic colors.
     (suwi-primary blue-cooler)
     (suwi-secondary cyan)
     (suwi-tertiary magenta)
-    (suwi-keyword suwi-base)
-    ;; Accent mappings
+    (suwi-keyword suwi-fg)
+    ;; Compatibility mappings for Modus accent slots.
     (accent-0 suwi-primary)
     (accent-1 suwi-primary)
     (accent-2 suwi-secondary)

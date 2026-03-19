@@ -47,14 +47,7 @@
     (diff-removed-highlight "#ffd7d5")
     (diff-removed-refine "#fdb8c0")
 
-    ;; Palette entries mapped to Modus semantics
-
-    ;; Accent 0: directories, unstaged changes, local git branches,
-    ;; Accent 1: git remotes
-    ;; Accent 2: git hashes, magit filename
-    ;; Accent 3: pretty much never used. magit tags,
-
-    (suwi-base jazz-purple)
+    (suwi-fg jazz-purple)
     (suwi-primary jazz-teal)
     (suwi-secondary jazz-pink)
     (suwi-tertiary jazz-gold)

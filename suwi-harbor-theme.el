@@ -18,7 +18,7 @@
     (harbor-rose "#D94574")
     (harbor-pink "#FF7F96")
 
-    (suwi-base harbor-fg)
+    (suwi-fg harbor-fg)
     (suwi-primary harbor-teal)
     (suwi-secondary harbor-rose)
     (suwi-tertiary harbor-pink))

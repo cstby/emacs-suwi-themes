@@ -13,7 +13,7 @@
 (require 'suwi-themes-light-base)
 
 (defconst suwi-unu-palette-partial
-  '((suwi-base "#3A2F6E")
+  '((suwi-fg "#3A2F6E")
     (suwi-primary "#2E2ABF")
     (suwi-secondary "#6A5CFF")
     (suwi-tertiary "#9A8CFF"))

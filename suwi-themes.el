@@ -48,6 +48,18 @@ The `suwi-themes' are built on top of the `modus-themes'."
 ;; before `suwi-themes-define-option-aliases' runs.
 (defvar suwi-themes-italic-constructs nil)
 
+(defun suwi-themes--with-derived-fg-main (palette)
+  "Return PALETTE with `fg-main' derived from `suwi-fg' when available.
+Modus treats `fg-main' as a named color in the base palette, so a later
+semantic mapping cannot override it.  When a concrete Suwi theme defines
+`suwi-fg', materialize a theme-local `fg-main' entry up front."
+  (if (or (assq 'fg-main palette)
+          (not (assq 'suwi-fg palette)))
+      palette
+    (cons (list 'fg-main
+                (modus-themes--retrieve-palette-value 'suwi-fg palette))
+          palette)))
+
 (defun suwi-themes--register-theme-metadata (theme description background-mode
                                                    core-palette palette-symbol
                                                    palette-overrides-symbol)
@@ -91,7 +103,8 @@ to the theme-local partial palette and custom-face symbols."
          :group 'suwi-themes
          :type '(repeat (list symbol (choice symbol string))))
        (defconst ,palette-symbol
-         (append ,palette-partial-symbol ,base-palette)
+         (append (suwi-themes--with-derived-fg-main ,palette-partial-symbol)
+                 ,base-palette)
          ,(format "Complete palette for `%s'." theme))
        (defconst ,custom-faces-symbol
          (append ,base-custom-faces ,custom-faces-partial-symbol)

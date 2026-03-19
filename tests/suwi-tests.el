@@ -28,8 +28,8 @@
   "Return THEME's value for symbol ending in SUFFIX."
   (symbol-value (suwi-tests--theme-symbol theme suffix)))
 
-(defun suwi-tests--new-user-palette (theme)
-  "Return current user palette entries for THEME."
+(defun suwi-tests--theme-palette (theme)
+  "Return the final palette entries for THEME."
   (suwi-tests--theme-value theme "palette"))
 
 (defun suwi-tests--theme-partial-palette (theme)
@@ -51,6 +51,13 @@
    ((memq theme suwi-themes-dark) suwi-base-dark-all-custom-faces)
    (t (error "Unknown active theme %S" theme))))
 
+(defun suwi-tests--theme-base-palette (theme)
+  "Return the base palette entries used by THEME."
+  (cond
+   ((memq theme suwi-themes-light) suwi-base-light-palette-full)
+   ((memq theme suwi-themes-dark) suwi-base-dark-palette-full)
+   (t (error "Unknown active theme %S" theme))))
+
 (defun suwi-tests--resolved-value (color palette)
   "Return resolved value of COLOR in PALETTE."
   (modus-themes--retrieve-palette-value color palette))
@@ -68,7 +75,7 @@
   "Theme palettes retain each theme's explicit palette keys."
   (dolist (theme (suwi-tests--themes))
     (let ((partial (suwi-tests--theme-partial-palette theme))
-          (palette (suwi-tests--new-user-palette theme)))
+          (palette (suwi-tests--theme-palette theme)))
       (dolist (entry partial)
         (should (assq (car entry) palette))))))
 
@@ -124,11 +131,25 @@
   "Explicit theme-local aliases override base palette values."
   (dolist (theme (suwi-tests--themes))
     (let ((partial (suwi-tests--theme-partial-palette theme))
-          (palette (suwi-tests--new-user-palette theme)))
+          (palette (suwi-tests--theme-palette theme)))
       (dolist (entry partial)
         (when (symbolp (cadr entry))
           (should (equal (suwi-tests--resolved-value (car entry) palette)
                          (suwi-tests--resolved-value (cadr entry) palette))))))))
+
+(ert-deftest suwi-tests-suwi-fg-derives-theme-foreground ()
+  "Themes either derive or inherit `fg-main' correctly."
+  (dolist (theme (suwi-tests--themes))
+    (let ((partial (suwi-tests--theme-partial-palette theme))
+          (palette (suwi-tests--theme-palette theme))
+          (base-palette (suwi-tests--theme-base-palette theme)))
+      (when (assq 'suwi-fg partial)
+        (should (equal (suwi-tests--resolved-value 'fg-main palette)
+                       (suwi-tests--resolved-value 'suwi-fg palette))))
+      (unless (assq 'suwi-fg partial)
+        (should-not (assq 'fg-main partial))
+        (should (equal (suwi-tests--resolved-value 'fg-main palette)
+                       (suwi-tests--resolved-value 'fg-main base-palette)))))))
 
 (provide 'suwi-tests)
 ;;; suwi-tests.el ends here
