@@ -124,7 +124,7 @@
     (keyword suwi-keyword)
     (constant suwi-primary)
     (fnname suwi-secondary)
-    (property suwi-secondary)
+    (property suwi-primary)
     (builtin suwi-primary)
     (fnname-call fg-main)
     (preprocessor fg-main)
@@ -172,8 +172,8 @@
     (date-holiday suwi-tertiary)
     (date-holiday-other suwi-tertiary)
     (date-range fg-alt)
-    (date-scheduled suwi-secondary)
-    (date-scheduled-subtle suwi-secondary)
+    (date-scheduled suwi-primary)
+    (date-scheduled-subtle suwi-primary)
     (date-weekday suwi-secondary)
     (date-weekend suwi-tertiary)
     ;; Theme-facing semantic colors.
@@ -221,7 +221,7 @@
     (fg-prompt suwi-primary)
     ;; Prose mappings
     (fg-prose-code suwi-primary)
-    (fg-prose-macro suwi-secondary)
+    (fg-prose-macro suwi-primary)
     (fg-prose-verbatim suwi-tertiary)
     (prose-done green)
     (prose-todo red)
