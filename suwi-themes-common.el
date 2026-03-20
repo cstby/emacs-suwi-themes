@@ -353,6 +353,7 @@
     `(diff-hl-delete ((,c :background ,bg-removed :foreground ,fg-removed)))
     `(diff-hl-change ((,c :background ,bg-changed :foreground ,fg-changed)))
     `(corfu-default ((,c :inherit modus-themes-fixed-pitch :background ,bg-main)))
+    `(markdown-gfm-checkbox-face ((,c :foreground ,suwi-secondary)))
     `(magit-diff-file-heading ((,c :inherit modus-themes-bold :foreground ,suwi-secondary)))
     `(magit-diff-file-heading-highlight ((,c :inherit modus-themes-bold :background ,bg-dim :foreground ,suwi-secondary)))
     `(magit-branch-remote ((,c :foreground ,suwi-secondary)))
