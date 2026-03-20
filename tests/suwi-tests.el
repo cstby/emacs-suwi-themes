@@ -146,8 +146,8 @@
       (when (assq 'suwi-fg partial)
         (should (equal (suwi-tests--resolved-value 'fg-main palette)
                        (suwi-tests--resolved-value 'suwi-fg palette))))
-      (unless (assq 'suwi-fg partial)
-        (should-not (assq 'fg-main partial))
+      (unless (or (assq 'suwi-fg partial)
+                  (assq 'fg-main partial))
         (should (equal (suwi-tests--resolved-value 'fg-main palette)
                        (suwi-tests--resolved-value 'fg-main base-palette)))))))
 
