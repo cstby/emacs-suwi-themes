@@ -13,10 +13,10 @@
 (require 'suwi-themes-light-base)
 
 (defconst suwi-unu-palette-partial
-  '((suwi-fg "#3A2F6E")
-    (suwi-primary "#2E2ABF")
+  '((suwi-fg        "#3A2F6E")
+    (suwi-primary   "#2E2ABF")
     (suwi-secondary "#6A5CFF")
-    (suwi-tertiary "#9A8CFF"))
+    (suwi-tertiary  "#9A8CFF"))
   "Palette entries that give `suwi-unu' its distinctive vibe.")
 
 (defconst suwi-unu-custom-faces-partial
@@ -24,7 +24,7 @@
   "Custom faces unique to `suwi-unu'.")
 
 (suwi-define-light-theme suwi-unu
-  "Soft violet light palette for the Suwi framework.")
+  "Soft purple light theme.")
 
 (provide 'suwi-unu-theme)
 
